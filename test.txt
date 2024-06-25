@@ -1,0 +1,10 @@
+ Volume in drive C is Windows
+ Volume Serial Number is 628C-FD9A
+
+ Directory of C:\Users\manal_\OneDrive\Documents\GitProject
+
+06/25/2024  03:46 PM    <DIR>          .
+06/25/2024  03:30 PM    <DIR>          ..
+06/25/2024  03:46 PM                 0 test.txt
+               1 File(s)              0 bytes
+               2 Dir(s)  820,634,980,352 bytes free
