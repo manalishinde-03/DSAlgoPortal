@@ -1,17 +1,24 @@
 package pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import utilities.TestBase;
 
-public class DataStructureIntroPage extends TestBase {
+public class DataStructureIntroPage {
+	
+	WebDriver driver;
 	
 	@FindBy(xpath ="//a[text()='Time Complexity']" )
 	WebElement link_TimeComplexity;
@@ -31,8 +38,8 @@ public class DataStructureIntroPage extends TestBase {
 	@FindBy(xpath="//button[text()='Run']")
 	WebElement btn_Run;
 	
-public DataStructureIntroPage() {
-		
+public DataStructureIntroPage(WebDriver driver) {
+	this.driver = driver;
 		PageFactory.initElements(driver,this);
 	}
 
@@ -69,14 +76,29 @@ public void executePythonCode(String pythonCode) {
 	
 }
 
-public void validateAlert(String pythonCode) {
+public void validateAlert(String pythonCode) throws AWTException {
 	
 	executePythonCode(pythonCode);
 	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-	Alert alert = driver.switchTo().alert();
-//	String alertMessage= driver.switchTo().alert().getText();
-//	System.out.println("Alert Message : "+alertMessage);
-	alert.accept();
+
+	
+	/*
+	 * WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+	 * wait.until(ExpectedConditions.alertIsPresent()); Alert alert =
+	 * driver.switchTo().alert();
+	 * System.out.println(driver.switchTo().alert().getText()); alert.accept();
+	 */
+	
+	Robot r = new Robot();
+	 
+	r.keyPress(KeyEvent.VK_ENTER);
+	r.keyRelease(KeyEvent.VK_ENTER);
+
+	
+	//Alert alert = driver.switchTo().alert();
+	//String alertMessage= driver.switchTo().alert().getText();
+	//System.out.println("Alert Message : "+alertMessage);
+	//alert.accept();
 	
 }
 

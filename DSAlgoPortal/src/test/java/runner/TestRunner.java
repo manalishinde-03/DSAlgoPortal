@@ -13,11 +13,11 @@ import io.cucumber.junit.Cucumber;
 	@CucumberOptions(
 			plugin = {"pretty", "html:target/htmlReports/testReport.html"}, //reporting purpose
 			monochrome=false,  //console output colour
-			//tags = "@DSAlgoRegisterPage", //tags from feature file
-			//tags = "@LoginFunctionality",
+			tags = "@DSAlgoRegisterFunctionality", //tags from feature file
+			//tags = "@DSAlgoLoginFunctionality",
+			//tags = "@TC_066",
 			//tags = "@DSAlgoHomePageValidation",
-			tags = "@DSAlgoHomePageValidation",
-			features = {"src/test/resources/features/Home.feature"}, //location of feature files
+			features = {"src/test/resources/features/Register.feature"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
 

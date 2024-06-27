@@ -1,7 +1,6 @@
 package pages;
 
-import utilities.TestBase;
 
-public class CommonPage extends TestBase {
+public class CommonPage{
 
 }

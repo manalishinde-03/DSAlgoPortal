@@ -1,18 +1,19 @@
-@DSAlgoRegisterPage
+@DSAlgoRegisterFunctionality
 Feature: DSAlgo Portal Register Page Verification
 
-  #@TC_1 @Passed
-  #Scenario Outline: Registration successful with valid credentials
-  #Given user navigates to Home page
-  #And user navigates to Register page
-  #When user enters <username> in username field on Register page
-  #And user enters <password> and <password confirmation> in password fields on Register page
-  #And user clicks on Register button
-  #Then validate the <message> on home page after registration for <username>
-  #
-  #Examples:
-  #| username        | password  | password confirmation | message                                   |
-  #| techtitanstest1 | Time2fly$ | Time2fly$             | New Account Created. You are logged in as |
+  @TC_1 @Passed
+  Scenario Outline: Registration successful with valid credentials
+    Given user navigates to Home page
+    And user navigates to Register page
+    When user enters <username> in username field on Register page
+    And user enters <password> and <password confirmation> in password fields on Register page
+    And user clicks on Register button
+    Then validate the <message> on home page after registration for <username>
+
+    Examples: 
+      | username        | password  | password confirmation | message                                   |
+      | techtitanstest2 | Time2fly$ | Time2fly$             | New Account Created. You are logged in as |
+
   @TC_2
   Scenario Outline: Register with all fields empty
     Given user navigates to Home page

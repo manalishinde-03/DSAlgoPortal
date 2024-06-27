@@ -7,12 +7,12 @@ Feature: DSAlgo Portal Home Page Verification
 
   @TC02
   Scenario: Home page -Data Structures Dropdown
-   Given user navigates to Home page
+    Given user navigates to Home page
     Then user clicks Data Structures dropdown and able to see all options
 
   @TC03
   Scenario: Home page -Register link
-   Given user navigates to Home page
+    Given user navigates to Home page
     Then user clicks Register link and navigates to Register page
 
   @TC04

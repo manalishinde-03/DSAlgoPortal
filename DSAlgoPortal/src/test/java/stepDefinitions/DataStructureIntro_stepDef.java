@@ -1,27 +1,27 @@
 package stepDefinitions;
 
+import java.awt.AWTException;
+
 import io.cucumber.java.en.Then;
 import pages.DataStructureIntroPage;
 import pages.HomePage;
-import pages.LoginPage;
-import utilities.TestBase;
 
-public class DataStructureIntro_stepDef extends TestBase {
+public class DataStructureIntro_stepDef{
 	
-	HomePage home;
-	LoginPage login;
-	DataStructureIntroPage dsIntro;
+	HomePage home = new HomePage(Hooks.driver);
+	//LoginPage login;
+	DataStructureIntroPage dsIntro = new DataStructureIntroPage(Hooks.driver);
 	
 	@Then("user navigates to Data Structures-Introduction page")
 	public void user_navigates_to_data_structures_introduction_page() {
-		home= new HomePage();
+		//home= new HomePage();
 		home.clickGetStartedOnHomePage();
 	   
 	}
 
 	@Then("user clicks on Time Complexity link")
 	public void user_clicks_on_time_complexity_link() {
-		dsIntro = new DataStructureIntroPage();
+		//dsIntro = new DataStructureIntroPage();
 		dsIntro.clickTimeComplexityLink();
 	    
 	}
@@ -48,7 +48,7 @@ public class DataStructureIntro_stepDef extends TestBase {
 	}
 
 	@Then("^user gets alert for invalid (.*)$")
-	public void user_gets_alert_for_invalid_pythonCode(String pythonCode) {
+	public void user_gets_alert_for_invalid_pythonCode(String pythonCode) throws AWTException {
 		
 		dsIntro.validateAlert(pythonCode);
 	   

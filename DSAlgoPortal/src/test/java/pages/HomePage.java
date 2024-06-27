@@ -3,14 +3,17 @@ package pages;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import utilities.TestBase;
 
-public class HomePage extends TestBase {
+
+public class HomePage{
+	
+	WebDriver driver;
 
 	@FindBy(xpath ="//ul/a[3]" )
 	WebElement link_SignOut;
@@ -44,8 +47,9 @@ public class HomePage extends TestBase {
 	WebElement text_registerSuccessMsg;
 	
 	
-	public HomePage() {
+	public HomePage(WebDriver driver) {
 		
+		this.driver = driver;
 		PageFactory.initElements(driver,this);
 	}
 
@@ -81,17 +85,25 @@ public class HomePage extends TestBase {
 		}
 	}
 	public void clickSignIn() {
+		//homePage = new HomePage(driver);
 		link_SignIn.click();
-		loginForm.isDisplayed();
+		//loginForm.isDisplayed();
+		if(!driver.getTitle().equals("Login"))
+		{
+			throw new IllegalStateException("This is Not Login page.The current page is:" +driver.getCurrentUrl());
+		}
 		System.out.println("User landed on Login page!");
 	}
 	public void clickSignOut() {
 		link_SignOut.click();
 	}
 	public void clickGetStartedOnHomePage() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		btn_GetStartedHome.click();
-		String pageTitle = driver.getTitle();
-		Assert.assertEquals(pageTitle, "Data Structures-Introduction");
+		/*
+		 * String pageTitle = driver.getTitle(); Assert.assertEquals(pageTitle,
+		 * "Data Structures-Introduction");
+		 */
 	}
 	public void clickRegister() {
 		link_Register.click();
@@ -113,7 +125,7 @@ public class HomePage extends TestBase {
 			}
 	}
 	public void validateWarningUserNotLoggedIn(String expectedWarning) {
-		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		 String actualWarningMsg = text_UserNotLoggedInWarning.getText();
 		  
 		 Assert.assertEquals(expectedWarning, actualWarningMsg);

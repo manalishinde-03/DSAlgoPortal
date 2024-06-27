@@ -2,16 +2,16 @@ package pages;
 
 import java.time.Duration;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import utilities.TestBase;
-import pages.HomePage;
-import pages.LoginPage;
 
-public class RegisterPage extends TestBase {
+public class RegisterPage {
+	
+	WebDriver driver;
 	
 	@FindBy(xpath ="//input[@name='username']" )
 	WebElement txt_username_register;
@@ -38,8 +38,9 @@ public class RegisterPage extends TestBase {
 	WebElement link_Register;
 	
 	
-	public RegisterPage() {
+	public RegisterPage(WebDriver driver) {
 		
+		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
 	public void enterUsername(String username) {
@@ -57,7 +58,7 @@ public class RegisterPage extends TestBase {
 	public HomePage clickRegisterBtn() {
 		btn_register.click();
 		
-		return new HomePage();
+		return new HomePage(driver);
 	}
 
 	public void validateErrorMsgRegistration(String errorMessage) {
@@ -76,12 +77,8 @@ public class RegisterPage extends TestBase {
 	public LoginPage clickLoginLink() {
 		
 		link_Login.click();
-		return new LoginPage();
+		return new LoginPage(driver);
+	
 	}
-
-	
-	
-
-
 
 }
