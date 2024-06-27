@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import java.io.IOException;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.Given;
@@ -29,6 +30,13 @@ public class Common_stepDef {
 
 	}
 
+	@When("user enters sheet {string} and {int}")
+	public void user_enters_sheet(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+		loginPage = new LoginPage(Hooks.driver);
+		loginPage.enterExcelDataForLogin(sheetname, rownumber);
+		
+	}
+	
 	@When("^user enters (.*) and (.*) on Login page$")
 	public void user_enters_username_and_password_on_login_page(String username, String password) {
 		loginPage = new LoginPage(Hooks.driver);

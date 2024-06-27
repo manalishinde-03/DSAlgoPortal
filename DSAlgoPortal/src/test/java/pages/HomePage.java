@@ -1,13 +1,18 @@
 package pages;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import utilities.ExcelReader;
 
 
 
@@ -53,11 +58,20 @@ public class HomePage{
 		PageFactory.initElements(driver,this);
 	}
 
-	public void validateMsgAfterLogin(String message) {
+	public void validateMsgAfterLogin(String expectedMessage) {
 		String actualMsg = text_loginSuccessMsg.getText();
-		  
-		  Assert.assertEquals(actualMsg,message);
+		
+		  Assert.assertEquals(actualMsg,expectedMessage);
 		  System.out.println("Login Successful!");
+	}
+	
+	public void validateMsgFromExcelAfterLogin(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+		 String expectedMessage = testdata.get(rownumber).get("message");
+		 validateMsgAfterLogin(expectedMessage);
 	}
 	
 	public void validateMsgAfterRegistration(String message, String username) {

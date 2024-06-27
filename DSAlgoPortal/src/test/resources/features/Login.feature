@@ -1,6 +1,46 @@
 @DSAlgoLoginFunctionality
 Feature: DSAlgo Portal Login Verification
 
+  @TC_Login_01
+  Scenario Outline: Sign In successful with valid credentials
+    Given user navigates to Home page
+    And user navigates to Login page
+    When user enters sheet "<Sheetname>" and <RowNumber>
+    And user clicks on Login button
+    Then validate the message from sheet "<Sheetname>" and <RowNumber> on home page
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | login     |         0 |
+      | login     |         1 |
+
+  @TC_Login_02
+  Scenario Outline: Validate Sign In with invalid and empty credentials
+    Given user navigates to Home page
+    And user navigates to Login page
+    When user enters sheet "<Sheetname>" and <RowNumber>
+    And user clicks on Login button
+    Then verify the error message from sheet "<Sheetname>" and <RowNumber> on Login page
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | login     |         2 |
+      | login     |         3 |
+
+ @TC_Login_03
+  Scenario Outline: Validate Sign In with invalid and empty credentials
+    Given user navigates to Home page
+    And user navigates to Login page
+    When user enters sheet "<Sheetname>" and <RowNumber>
+    And user clicks on Login button
+    Then verify error for invalid data from sheet "<Sheetname>" and <RowNumber> on Login page
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | login     |         4 |
+      | login     |         5 |
+  
+
   @TC_001
   Scenario Outline: Sign In successful with valid credentials
     Given user navigates to Home page

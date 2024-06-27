@@ -1,7 +1,10 @@
 package stepDefinitions;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,10 +16,10 @@ public class Login_stepDef {
 	HomePage home = new HomePage(Hooks.driver);
 	LoginPage login = new LoginPage(Hooks.driver);
 
-	@Then("^validate the (.*) on home page$")
-	public void validate_the_msg_on_home_page(String message) {
+	@Then("validate the message from sheet {string} and {int} on home page")
+	public void validate_the_msg_on_home_page(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 		//home = new HomePage(Hooks.driver);
-		this.home.validateMsgAfterLogin(message);
+		this.home.validateMsgFromExcelAfterLogin(sheetname,rownumber);
 
 	}
 
@@ -31,11 +34,16 @@ public class Login_stepDef {
 		
 		 login.validateToolTipErrorMsg(errorMessage);
 	}
+	
+	@Then("verify the error message from sheet {string} and {int} on Login page")
+	public void validate_the_error_on_login_page_excel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+		
+		 login.validateToolTipErrorMessageExcel(sheetname,rownumber);
+	}
 
-	@Then("^validate the (.*) on Login page for invalid credential$")
-	public void validate_the_error_on_login_page_for_invalid_credential(String errorMessage) {
-		//login = new LoginPage(Hooks.driver);
-		 login.validateErrorMsg(errorMessage);
+	@Then("verify error for invalid data from sheet {string} and {int} on Login page")
+	public void validate_the_error_on_login_page_for_invalid_credential(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+		 login.validateErrorMessageExcel(sheetname, rownumber);
 	}
 
 	@Then("user clicks on Register link on Login page")
