@@ -18,7 +18,6 @@ public class Common_stepDef {
 	@Given("user navigates to Home page")
 	public void user_navigates_to_home_page() throws IOException {
 
-		// driver = Hooks.driver;
 		homePage = new HomePage(Hooks.driver);
 	}
 
