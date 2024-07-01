@@ -26,7 +26,9 @@ public class Hooks {
 	{
 		
 		configProp = new Properties();
-		FileInputStream fis = new FileInputStream("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\config\\config.properties");
+		//FileInputStream fis = new FileInputStream("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\config\\config.properties");
+		FileInputStream fis = new FileInputStream("C:\\Users\\leela\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\configleela\\config.properties");
+		
 		configProp.load(fis);
 		
 		String browserName = configProp.getProperty("browser");
@@ -59,7 +61,7 @@ public class Hooks {
 	@After
 	public void tearDown() {
 		
-		//driver.quit();
+		driver.quit();
 	}
 
 }
