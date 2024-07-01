@@ -14,8 +14,6 @@ import org.testng.Assert;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import utilities.ExcelReader;
 
-
-
 public class HomePage{
 	
 	WebDriver driver;
@@ -147,6 +145,17 @@ public class HomePage{
 
 	public void clickGetStartedBtn() {
 		btn_GetStarted.click();
+	}
+
+	public void validateSuccessMsgfromExcelAfterRegistration(String sheetname, int rowNumber) throws InvalidFormatException, IOException {
+		
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+		 String expectedMessage = testdata.get(rowNumber).get("message");
+		 String username = testdata.get(rowNumber).get("username");
+		 validateMsgAfterRegistration(expectedMessage, username);
+		
 	}
 	
 	

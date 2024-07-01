@@ -3,6 +3,7 @@ package pages;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,23 +13,21 @@ import org.testng.Assert;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import utilities.ExcelReader;
+import utilities.LoggerLoad;
 
 public class LoginPage {
 
 	WebDriver driver;
+	public Properties configProp;
 
 	@FindBy(xpath = "//input[@name='username']")
 	WebElement txt_username_login;
-
 	@FindBy(xpath = "//input[@name='password']")
 	WebElement txt_password_login;
-
 	@FindBy(xpath = "//input[@value='Login']")
 	WebElement btn_login;
-
 	@FindBy(xpath = "//div[2]/div/div[2]/a")
 	WebElement link_register;
-
 	@FindBy(xpath = "//div[@class='alert alert-primary']")
 	WebElement text_errorMsg;
 
@@ -69,6 +68,7 @@ public class LoginPage {
 		WebElement activeElement = driver.switchTo().activeElement();
 		String messageStr = activeElement.getAttribute("validationMessage");
 		System.out.println("Actual message appeared on screen: " + messageStr);
+		Assert.assertEquals(messageStr, errorMessage);
 	}
 
 	// to verify tooltip message
@@ -93,8 +93,9 @@ public class LoginPage {
 		String username = testdata.get(rownumber).get("username");
 		String password = testdata.get(rownumber).get("password");
 
-		// String message = testdata.get(rownumber).get("expectedmessage");
+		LoggerLoad.info("User entered username as \" " + username + " \"and Password as \" " + password + "\" ");
 
+		//if (username != null || password != null)
 		enterDataForLogin(username, password);
 
 	}
