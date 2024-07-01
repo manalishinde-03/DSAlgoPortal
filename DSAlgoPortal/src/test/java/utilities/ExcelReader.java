@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -24,7 +25,7 @@ public class ExcelReader {
 
 		Workbook workbook = WorkbookFactory.create(new File(excelFilePath));
 		Sheet sheet = workbook.getSheet(sheetName);
-		workbook.close();
+		//workbook.close();
 		return readSheet(sheet);
 	}
 
@@ -44,6 +45,8 @@ public class ExcelReader {
 			int totalColumn = row.getLastCellNum();
 
 			LinkedHashMap<String, String> columnMapdata = new LinkedHashMap<String, String>();
+			
+			String data = null;
 
 			for (int currentColumn = 0; currentColumn < totalColumn; currentColumn++) {
 
@@ -51,8 +54,17 @@ public class ExcelReader {
 
 				String columnHeaderName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn)
 						.getStringCellValue();
-
-				columnMapdata.put(columnHeaderName, cell.getStringCellValue());
+				  
+				  if(cell.getCellType()==CellType.STRING) 
+					  data = cell.getStringCellValue();
+				  else if(cell.getCellType()==CellType.NUMERIC) 
+					  data = String.valueOf(cell.getNumericCellValue());
+				  else if(cell.getCellType()==CellType.BLANK) 
+					  data = String.valueOf(cell.getStringCellValue());
+				 
+				
+				//columnMapdata.put(columnHeaderName, cell.getStringCellValue());
+				columnMapdata.put(columnHeaderName, data);
 			}
 
 			excelRows.add(columnMapdata);

@@ -1,6 +1,18 @@
 @DSAlgoRegisterFunctionality
 Feature: DSAlgo Portal Register Page Verification
 
+  @TC_Register_01
+  Scenario Outline: Registration successful with valid credentials
+    Given user navigates to Home page
+    And user navigates to Register page
+    When user enters sheetname "<Sheetname>" and row <RowNumber>
+    And user clicks on Register button
+   # Then validate the message after registration from sheetname "<Sheetname>" and row <RowNumber> on home page
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | register  |         0 |
+
   @TC_1 @Passed
   Scenario Outline: Registration successful with valid credentials
     Given user navigates to Home page

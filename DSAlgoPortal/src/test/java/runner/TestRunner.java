@@ -13,8 +13,8 @@ import io.cucumber.junit.Cucumber;
 	@CucumberOptions(
 			plugin = {"pretty", "html:target/htmlReports/testReport.html"}, //reporting purpose
 			monochrome=false,  //console output colour
-			tags = "@TC_Login_01", //tags from feature file
-			//tags = "@DSAlgoLoginFunctionality",
+			tags = "@DSAlgoLoginFunctionality", //tags from feature file
+			//tags = "@TC_Register_01",
 			//tags = "@TC_066",
 			//tags = "@DSAlgoHomePageValidation",
 			features = {"src/test/resources/features/Login.feature"}, //location of feature files

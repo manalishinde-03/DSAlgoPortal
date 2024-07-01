@@ -12,7 +12,6 @@ public class Home_stepDef {
 	@Then("user clicks Data Structures dropdown and able to see all options")
 	public void user_is_able_to_see_all_options_in_data_structures_dropdown() {
 		this.home.validateDataStructuresDropdown();
-		
 	}
 
 	@Then("user clicks Register link and navigates to Register page")
