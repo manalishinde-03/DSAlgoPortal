@@ -9,7 +9,7 @@
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
-    <version>4.20.0</version>
+    <version>4.22.0</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 <dependency>
@@ -43,7 +43,22 @@
     <version>5.2.5</version>
 </dependency>
 
+<<<<<<< HEAD
+=======
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>2.23.1</version>
+  </dependency>
+  <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.23.1</version>
+  </dependency>
+>>>>>>> branch 'master' of https://github.com/manalishinde-03/DSAlgoPortal.git
 	
-  </dependencies>
+</dependencies>
+
+
   
 </project>

@@ -34,7 +34,11 @@ Feature: Explore Graph Module
       | techtitans | Time2fly$ |
 
   @GettingStartedGraphRepresentation
+<<<<<<< HEAD
   Scenario Outline: User clicks "Get Started" button in Graph panel to explore GraphRepresentations link
+=======
+  Scenario Outline: User clicks "Getting Started" button in Graph panel to explore GraphRepresentations link
+>>>>>>> branch 'master' of https://github.com/manalishinde-03/DSAlgoPortal.git
     Given user navigates to Home page
     And user navigates to Login page
     When user enters <username> and <password> on Login page
