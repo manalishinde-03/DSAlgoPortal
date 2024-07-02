@@ -16,10 +16,10 @@ public class GraphPage {
 	  @FindBy(xpath="/html/body/div[3]/div[7]/div/div/a")WebElement GetStarted;
 	  @FindBy(xpath="//div/ul[2]/a[text()='Graph']")WebElement Graph;
 	  @FindBy(xpath="//a[text()='Graph Representations']") WebElement GraphRepresentations ;
-	  @FindBy(xpath="//input[@name='username']")WebElement user;
-	  @FindBy(xpath="//input[@name='password']")WebElement pwd;
-	  @FindBy(xpath="//input[@value='Login']")WebElement login;
-	  @FindBy(xpath="//a[text()='Sign in']")WebElement signin;
+//	  @FindBy(xpath="//input[@name='username']")WebElement user;
+//	  @FindBy(xpath="//input[@name='password']")WebElement pwd;
+//	  @FindBy(xpath="//input[@value='Login']")WebElement login;
+//	  @FindBy(xpath="//a[text()='Sign in']")WebElement signin;
 	  	
 	  //@FindBy(xpath="//button[text()='Run']") WebElement Run;
 	  //@FindBy(xpath="//a[text()='Sign out']") WebElement Signout;
@@ -70,14 +70,14 @@ public class GraphPage {
 //				return false;
 //			}
 //		}
-	   public void enteruserpassword(String username,String password) {
-		   user.sendKeys(username);
-		   pwd.sendKeys(password);
-	   }
-	   public void login() {
-		   login.click();
-	   }
-//		
+//	   public void enteruserpassword(String username,String password) {
+//		   user.sendKeys(username);
+//		   pwd.sendKeys(password);
+//	   }
+//	   public void login() {
+//		   login.click();
+//	   }
+////		
 		 public void GraphOptions() {
 		    	//handledropbox(driver);
 				//driver.findElement(By.xpath("//a[text()='Graph']")).click();
@@ -140,10 +140,10 @@ public class GraphPage {
 //		 }
 //		
 
-		public void signin() {
-		signin.click();	
-		}
-	  
+//		public void signin() {
+//		signin.click();	
+//		}
+//	  
 
 
 }

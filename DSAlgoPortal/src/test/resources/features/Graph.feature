@@ -22,29 +22,28 @@ Feature: Explore Graph Module
     And user clicks on Login button
     When User clicks the GetStarted button in Graph Panel
     Then User clicks Graph link
-    And Graph user clicks tryhere button
-    Then Graph user should be directed to tryEditor write non python code and clicks run button
-    And Graph user write python code and clicks run button and it will display output
-    Then Graph user goes to previous page
-    Then Graph user goes back to graph page
-    Then Graph user goes back to home page
+    And user clicks tryhere button
+    Then user should be directed to tryEditor write non python code and clicks run button
+    And user write python code and clicks run button and it will display output
+    Then user goes to previous page
+
 
     Examples: 
       | username   | password  |
       | techtitans | Time2fly$ |
 
   @GettingStartedGraphRepresentation
-  Scenario Outline: User clicks "Getting Started" button in Graph panel to explore GraphRepresentations link
+  Scenario Outline: User clicks "Get Started" button in Graph panel to explore GraphRepresentations link
     Given user navigates to Home page
     And user navigates to Login page
     When user enters <username> and <password> on Login page
     And user clicks on Login button
     When User clicks the GetStarted button in Graph Panel
     Then User clicks GraphRepresentations link
-    And Graph user clicks tryhere button
-    Then Graph user should be directed to tryEditor write non python code and clicks run button
-    And Graph user write python code and clicks run button and it will display output
-    Then Graph user goes to previous page
+    And user clicks tryhere button
+    Then user should be directed to tryEditor write non python code and clicks run button
+    And user write python code and clicks run button and it will display output
+    Then user goes to previous page
     Then user clicks signout link
     Then logged out successfully message will be displayed
 
