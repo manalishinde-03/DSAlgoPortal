@@ -63,7 +63,6 @@ public class HomePage{
 		String actualMsg = text_loginSuccessMsg.getText();
 		
 		  Assert.assertEquals(actualMsg,expectedMessage);
-		  Logger.class
 		  System.out.println("Login Successful!");
 	}
 	

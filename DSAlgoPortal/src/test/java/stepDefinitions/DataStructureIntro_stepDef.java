@@ -1,7 +1,9 @@
 package stepDefinitions;
 
 import java.awt.AWTException;
+import java.io.IOException;
 
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.cucumber.java.en.Then;
 import pages.DataStructureIntroPage;
 import pages.HomePage;
@@ -45,6 +47,11 @@ public class DataStructureIntro_stepDef{
 		
 		dsIntro.executePythonCode(pythonCode);
 	   
+	}
+	
+	@Then("user executes code from  sheetname {string} and row number {int}")
+	public void user_executes_pythonCode_from_Excel_successfully(String sheetname, int row) throws InvalidFormatException, IOException{
+		dsIntro.executeExcelPythonCode(sheetname,row);
 	}
 
 	@Then("^user gets alert for invalid (.*)$")

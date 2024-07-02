@@ -3,7 +3,10 @@ package pages;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +17,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import utilities.ExcelReader;
 
 
 public class DataStructureIntroPage {
@@ -56,7 +62,7 @@ public void clickPracticeQuestionsLink() {
 	Assert.assertEquals(pageTitle, "Practice Questions");
 	
 }
-
+//use try here from common page 
 public void clickTryHereButton() {
 	Actions action = new Actions(driver);
 	action.scrollToElement(btn_tryHere);
@@ -101,5 +107,18 @@ public void validateAlert(String pythonCode) throws AWTException {
 	//alert.accept();
 	
 }
+
+public void executeExcelPythonCode(String sheetname, int row) throws InvalidFormatException, IOException {
+	ExcelReader reader = new ExcelReader();
+
+	List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+
+	String code = testdata.get(row).get("python code");
+
+	executePythonCode(code);
+
+}
+
+
 
 }
