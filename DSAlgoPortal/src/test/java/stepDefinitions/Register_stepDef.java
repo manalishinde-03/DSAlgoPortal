@@ -1,8 +1,5 @@
 package stepDefinitions;
 
-import java.io.IOException;
-
-import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,14 +13,18 @@ public class Register_stepDef {
 	LoginPage loginPage = new LoginPage(Hooks.driver);
 	RegisterPage registerPage = new RegisterPage(Hooks.driver);
 	
+	
+	
 	@Given("user navigates to Register page")
 	public void user_navigates_to_register_page() {
 		homePage.clickRegister();
+		
 	}
 	
 	@When("^user enters (.*) in username field on Register page$")
 	public void user_enters_username_on_register_page(String username) {
 		registerPage.enterUsername(username);
+		
 		
 	}
 	@When("^user enters (.*) and (.*) in password fields on Register page$")
@@ -32,10 +33,6 @@ public class Register_stepDef {
 		registerPage.enterPasswordConfirmation(confirmPassword);
 	}
 	
-	@When("user enters sheetname {string} and row {int}")
-	public void user_enters_sheetname_and_row_register_page(String sheetname, int rowNumber) throws InvalidFormatException, IOException {
-		this.registerPage.enterExcelDataForRegistration(sheetname, rowNumber);
-	}
 	
 	@When("user clicks on Register button")
 	public void user_clicks_on_register_button() {
@@ -55,12 +52,6 @@ public class Register_stepDef {
 	@Then("^validate the (.*) on home page after registration for (.*)$")
 	public void validate_the_msg_on_home_page_afterReg(String message, String username) {
 		homePage.validateMsgAfterRegistration(message, username);
-	    
-	}
-	
-	@Then("validate the message after registration from sheetname {string} and row {int} on home page")
-	public void validate_the_msg_on_home_page_afterReg_fromExcel(String sheetname, int rowNumber) throws InvalidFormatException, IOException {
-		homePage.validateSuccessMsgfromExcelAfterRegistration(sheetname, rowNumber);
 	    
 	}
 	
