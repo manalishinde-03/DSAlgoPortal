@@ -1,4 +1,4 @@
-package stepDefinitions;
+package hooks;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -26,16 +26,6 @@ public class Hooks {
 	@Before
 	public void setUp() throws IOException
 	{
-		
-		/*
-		 * configProp = new Properties(); FileInputStream fis = new FileInputStream(
-		 * "C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\config\\config.properties"
-		 * ); //FileInputStream fis = new FileInputStream(
-		 * "C:\\Users\\leela\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\configleela\\config.properties"
-		 * );
-		 * 
-		 * configProp.load(fis);
-		 */
 		configReader = new ConfigReader();
 		configProp = configReader.initializeProp();
 		String browserName = configProp.getProperty("browser");

@@ -12,6 +12,7 @@ import org.testng.Assert;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import utilities.ExcelReader;
+import utilities.LoggerLoad;
 
 public class LoginPage {
 
@@ -54,21 +55,21 @@ public class LoginPage {
 		link_register.click();
 		String url = driver.getCurrentUrl();
 		Assert.assertEquals("https://dsportalapp.herokuapp.com/register", url);
-		System.out.println("User navigated to Register page!");
+		LoggerLoad.info("User navigated to Register page!");
 	}
 
 	public void validateErrorMsg(String errorMessage) {
 		String actualMsg = text_errorMsg.getText();
 
 		Assert.assertEquals(actualMsg, errorMessage);
-		System.out.println("Error Displayed!");
+		LoggerLoad.error(actualMsg);
 	}
 
 	public void validateToolTipErrorMsg(String errorMessage) {
 
 		WebElement activeElement = driver.switchTo().activeElement();
 		String messageStr = activeElement.getAttribute("validationMessage");
-		System.out.println("Actual message appeared on screen: " + messageStr);
+		LoggerLoad.error(messageStr);
 	}
 
 	// to verify tooltip message

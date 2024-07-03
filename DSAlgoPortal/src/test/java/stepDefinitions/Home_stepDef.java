@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import java.time.Duration;
 
+import hooks.Hooks;
 import io.cucumber.java.en.Then;
 import pages.HomePage;
 

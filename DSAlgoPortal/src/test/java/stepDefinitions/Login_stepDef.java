@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 
+import hooks.Hooks;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
