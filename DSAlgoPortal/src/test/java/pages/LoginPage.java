@@ -36,19 +36,15 @@ public class LoginPage {
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-
 	}
 
 	public void enterDataForLogin(String username, String password) {
-
 		txt_username_login.sendKeys(username);
 		txt_password_login.sendKeys(password);
-
 	}
 
 	public void clickLoginBtn() {
 		btn_login.click();
-		
 	}
 
 	public void clickRegisterLink() {
@@ -72,40 +68,22 @@ public class LoginPage {
 		LoggerLoad.error(messageStr);
 	}
 
-	// to verify tooltip message
-	public boolean isAttribtuePresent(WebElement element, String attribute) {
-		Boolean result = false;
-		try {
-			String value = element.getAttribute(attribute);
-			if (value != null) {
-				result = true;
-			}
-		} catch (Exception e) {
-		}
-		return result;
-	}
-
 	public void enterExcelDataForLogin(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 
 		ExcelReader reader = new ExcelReader();
 
-		List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+		List<Map<String, String>> testdata = reader.getData("src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
 
 		String username = testdata.get(rownumber).get("username");
 		String password = testdata.get(rownumber).get("password");
-
-		// String message = testdata.get(rownumber).get("expectedmessage");
-
 		enterDataForLogin(username, password);
 
 	}
 
 	public void validateToolTipErrorMessageExcel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 
-
 		ExcelReader reader = new ExcelReader();
-
-		List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+		List<Map<String, String>> testdata = reader.getData("src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
 
 		String errorMessage = testdata.get(rownumber).get("message");
 		validateToolTipErrorMsg(errorMessage);
@@ -115,7 +93,7 @@ public class LoginPage {
 public void validateErrorMessageExcel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 
 	ExcelReader reader = new ExcelReader();
-	List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+	List<Map<String, String>> testdata = reader.getData("src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
 
 	String errorMessage = testdata.get(rownumber).get("message");
 	validateErrorMsg(errorMessage);
