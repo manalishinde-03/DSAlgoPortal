@@ -9,11 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import io.cucumber.core.logging.Logger;
 import utilities.ExcelReader;
+import utilities.LoggerLoad;
 
 
 
@@ -60,17 +63,18 @@ public class HomePage{
 	}
 
 	public void validateMsgAfterLogin(String expectedMessage) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		String actualMsg = text_loginSuccessMsg.getText();
 		
 		  Assert.assertEquals(actualMsg,expectedMessage);
-		  System.out.println("Login Successful!");
+		  LoggerLoad.info("Login Successful!");
 	}
 	
 	public void validateMsgFromExcelAfterLogin(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 
 		ExcelReader reader = new ExcelReader();
 
-		List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
 		 String expectedMessage = testdata.get(rownumber).get("message");
 		 validateMsgAfterLogin(expectedMessage);
 	}
@@ -80,12 +84,12 @@ public class HomePage{
 		String expectedSuccessMsg = message+" "+username;  
 		
 		Assert.assertEquals(registerSuccessMsg,expectedSuccessMsg);
-		  System.out.println("Registration Successful!");
+		LoggerLoad.info("Registration Successful!");
 	}
 	
 	public void validateUserLandedOnHomePage() {
-		  driver.getPageSource().contains("NumpyNinja");
-		    System.out.println("User landed on Home page!");
+		  this.driver.getPageSource().contains("NumpyNinja");
+		  LoggerLoad.info("User landed on Home page!");
 	}
 	
 	public void validateDataStructuresDropdown() {
@@ -100,29 +104,26 @@ public class HomePage{
 		}
 	}
 	public void clickSignIn() {
-		//homePage = new HomePage(driver);
-		link_SignIn.click();
-		//loginForm.isDisplayed();
-		if(!driver.getTitle().equals("Login"))
-		{
-			throw new IllegalStateException("This is Not Login page.The current page is:" +driver.getCurrentUrl());
-		}
+		Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOf(link_SignIn)).click();
+		
+		Assert.assertEquals(driver.getTitle(),"Login");
 		System.out.println("User landed on Login page!");
 	}
 	public void clickSignOut() {
 		link_SignOut.click();
 	}
 	public void clickGetStartedOnHomePage() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		btn_GetStartedHome.click();
-		/*
-		 * String pageTitle = driver.getTitle(); Assert.assertEquals(pageTitle,
-		 * "Data Structures-Introduction");
-		 */
+		
+		  String homePageTitle = driver.getTitle(); 
+		  //Assert.assertEquals(homePageTitle,"NumpyNinja");
+		 
 	}
 	public void clickRegister() {
 		link_Register.click();
-		registrationForm.isDisplayed();
+		Assert.assertEquals(driver.getTitle(),"Registration");
 		System.out.println("User landed on Register page!");
 	}
 
@@ -131,7 +132,7 @@ public class HomePage{
 		  String usernameLowerCase = actualUserName.toLowerCase();
 		  
 		  Assert.assertEquals( usernameLowerCase,username);
-		  System.out.println("Username is displayed on Home page");
+		  System.out.println("Username is displayed to top right corner on Home page");
 		  
 		  if(link_SignOut.isDisplayed()) {
 				System.out.println("Sign out link is displayed");
@@ -140,7 +141,7 @@ public class HomePage{
 			}
 	}
 	public void validateWarningUserNotLoggedIn(String expectedWarning) {
-		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		 this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		 String actualWarningMsg = text_UserNotLoggedInWarning.getText();
 		  
 		 Assert.assertEquals(expectedWarning, actualWarningMsg);
@@ -148,6 +149,15 @@ public class HomePage{
 
 	public void clickGetStartedBtn() {
 		btn_GetStarted.click();
+	}
+
+	public void validateMsgFromExcelAfterRegistration(String sheetname, int row) throws InvalidFormatException, IOException {
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
+		 String expectedMessage = testdata.get(row).get("message");
+		 String username = testdata.get(row).get("username");
+		 validateMsgAfterRegistration(expectedMessage,username);
 	}
 	
 	

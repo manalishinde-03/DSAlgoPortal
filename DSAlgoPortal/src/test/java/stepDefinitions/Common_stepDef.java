@@ -1,31 +1,46 @@
 package stepDefinitions;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import hooks.Hooks;
+import driverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.LoginPage;
+import utilities.ExcelReader;
 
 public class Common_stepDef {
 
 	HomePage homePage;
 	LoginPage loginPage;
+	
+	public static WebDriver driver;  
+	
+	/*
+	 * @Given("User is on the Login page") public void user_launches_login_page()
+	 * throws IOException { //driver = DriverFactory.getDriver();
+	 * //driver=Hooks.driver; homePage = new HomePage(driver);
+	 * homePage.clickSignIn();
+	 * 
+	 * System.out.println("Im in Login page....");
+	 * 
+	 * }
+	 */
 
 	@Given("user navigates to Home page")
 	public void user_navigates_to_home_page() throws IOException {
-
 		homePage = new HomePage(Hooks.driver);
+		
 	}
 
 	@Given("user navigates to Login page")
 	public void user_navigates_to_login_page() {
-
-		homePage = new HomePage(Hooks.driver);
+		//homePage = new HomePage(driver);
 		homePage.clickSignIn();
 
 	}

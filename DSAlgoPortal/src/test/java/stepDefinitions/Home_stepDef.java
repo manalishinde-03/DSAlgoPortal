@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import java.time.Duration;
 
-import hooks.Hooks;
 import io.cucumber.java.en.Then;
 import pages.HomePage;
 
@@ -30,13 +29,13 @@ public class Home_stepDef {
 	@Then("user clicks on Get Started button below any Data Structure topic")
 	public void user_clicks_on_get_started_button_below_any_data_structure_topic() {
 		 
-		home.clickGetStartedOnHomePage();
+		this.home.clickGetStartedOnHomePage();
 	}
 
 	@Then("^user not logged in (.*) should be displayed$")
 	public void user_not_logged_in_warning_message_should_be_displayed(String expectedWarning) {
 		
-		home.validateWarningUserNotLoggedIn(expectedWarning);
+		this.home.validateWarningUserNotLoggedIn(expectedWarning);
 	}
 
 	

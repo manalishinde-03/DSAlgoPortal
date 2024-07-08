@@ -1,8 +1,7 @@
 @DSAlgoDataStructureIntro
 Feature: Validate Data Structure Introduction Module
 
-
- @TC_DSIntro_01
+  @TC_DSIntro_01
   Scenario Outline: Verify Navigation to Data Structures-Introduction page
     Given user navigates to Home page
     And user navigates to Login page
@@ -12,8 +11,8 @@ Feature: Validate Data Structure Introduction Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor     |         0 |
-      | tryEditor     |         1 |
+      | tryEditor |         0 |
+      | tryEditor |         1 |
 
   @TC_01
   Scenario Outline: Verify Navigation to Data Structures-Introduction page
@@ -31,15 +30,15 @@ Feature: Validate Data Structure Introduction Module
   Scenario Outline: Validate Time Complexity link
     Given user navigates to Home page
     And user navigates to Login page
-     When user enters sheet "<Sheetname>" and <RowNumber>
+    When user enters sheet "<Sheetname>" and <RowNumber>
     And user clicks on Login button
     Then user navigates to Data Structures-Introduction page
     And user clicks on Time Complexity link
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor     |         0 |
-      | tryEditor     |         1 |
+      | tryEditor |         0 |
+      | tryEditor |         1 |
 
   @TC_03
   Scenario Outline: Validate Practice Questions link
@@ -51,10 +50,10 @@ Feature: Validate Data Structure Introduction Module
     And user clicks on Time Complexity link
     And user clicks on Practice Questions link
 
-     Examples: 
+    Examples: 
       | Sheetname | RowNumber |
-      | tryEditor     |         0 |
-      | tryEditor     |         1 |
+      | tryEditor |         0 |
+      | tryEditor |         1 |
 
   @TC_04
   Scenario Outline: Validate Try Here button
@@ -68,14 +67,14 @@ Feature: Validate Data Structure Introduction Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor     |         0 |
-      | tryEditor     |         1 |
+      | tryEditor |         0 |
+      | tryEditor |         1 |
 
   @TC_05
   Scenario Outline: Validate Try Editor
     Given user navigates to Home page
     And user navigates to Login page
-     When user enters sheet "<Sheetname>" and <RowNumber>
+    When user enters sheet "<Sheetname>" and <RowNumber>
     And user clicks on Login button
     Then user navigates to Data Structures-Introduction page
     And user clicks on Time Complexity link
@@ -84,8 +83,7 @@ Feature: Validate Data Structure Introduction Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor     |         4 |
-
+      | tryEditor |         4 |
 
   @TC_066
   Scenario Outline: Validate Try Editor with invalid code

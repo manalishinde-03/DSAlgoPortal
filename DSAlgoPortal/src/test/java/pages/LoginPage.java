@@ -72,7 +72,7 @@ public class LoginPage {
 
 		ExcelReader reader = new ExcelReader();
 
-		List<Map<String, String>> testdata = reader.getData("src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
+		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
 
 		String username = testdata.get(rownumber).get("username");
 		String password = testdata.get(rownumber).get("password");
@@ -83,7 +83,7 @@ public class LoginPage {
 	public void validateToolTipErrorMessageExcel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 
 		ExcelReader reader = new ExcelReader();
-		List<Map<String, String>> testdata = reader.getData("src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
+		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
 
 		String errorMessage = testdata.get(rownumber).get("message");
 		validateToolTipErrorMsg(errorMessage);
@@ -93,7 +93,7 @@ public class LoginPage {
 public void validateErrorMessageExcel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 
 	ExcelReader reader = new ExcelReader();
-	List<Map<String, String>> testdata = reader.getData("src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
+	List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
 
 	String errorMessage = testdata.get(rownumber).get("message");
 	validateErrorMsg(errorMessage);

@@ -1,107 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-02T19:51:20 CDT" name="Default suite" finished-at="2024-07-02T19:51:35 CDT" duration-ms="14875">
+  <suite started-at="2024-07-08T13:41:11 CDT" name="Default suite" finished-at="2024-07-08T13:41:19 CDT" duration-ms="7469">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@38afe297]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2024-07-02T19:51:20 CDT" name="Default test" finished-at="2024-07-02T19:51:35 CDT" duration-ms="14875">
+    <test started-at="2024-07-08T13:41:11 CDT" name="Default test" finished-at="2024-07-08T13:41:19 CDT" duration-ms="7469">
       <class name="runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-02T19:51:20 CDT" name="setUpClass" finished-at="2024-07-02T19:51:21 CDT" duration-ms="603" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-08T13:41:11 CDT" name="setUpClass" finished-at="2024-07-08T13:41:12 CDT" duration-ms="525" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@6d11ceef]]>
+                <![CDATA[org.testng.TestRunner@a1691c0]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-02T19:51:21 CDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-07-02T19:51:24 CDT" duration-ms="2812" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-08T13:41:12 CDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-07-08T13:41:19 CDT" duration-ms="6882" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Home page navigation"]]>
+                <![CDATA["Validate Try Editor"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["DSAlgo Portal Home Page Verification"]]>
+                <![CDATA["Validate Data Structure Introduction Module"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-02T19:51:24 CDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-07-02T19:51:26 CDT" duration-ms="2581" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Home page -Data Structures Dropdown"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["DSAlgo Portal Home Page Verification"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-02T19:51:26 CDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-07-02T19:51:29 CDT" duration-ms="2432" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Home page -Register link"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["DSAlgo Portal Home Page Verification"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-02T19:51:29 CDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-07-02T19:51:32 CDT" duration-ms="2822" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Home page -Sign In link"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["DSAlgo Portal Home Page Verification"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-02T19:51:32 CDT" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2024-07-02T19:51:35 CDT" duration-ms="3503" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Home page -Get Started button below Data Structure topic"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["DSAlgo Portal Home Page Verification"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-02T19:51:35 CDT" name="tearDownClass" finished-at="2024-07-02T19:51:35 CDT" duration-ms="39" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@38afe297]" started-at="2024-07-08T13:41:19 CDT" name="tearDownClass" finished-at="2024-07-08T13:41:19 CDT" duration-ms="20" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

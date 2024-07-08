@@ -1,6 +1,8 @@
 package stepDefinitions;
 
-import hooks.Hooks;
+import java.io.IOException;
+
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,6 +22,11 @@ public class Register_stepDef {
 	public void user_navigates_to_register_page() {
 		homePage.clickRegister();
 		
+	}
+	
+	@When("user fills registration form from sheetname {string} and row {int}")
+	public void user_fills_registration_form_register_page(String sheetname, int row) throws InvalidFormatException, IOException {
+		registerPage.fillRegistrationForm(sheetname,row);
 	}
 	
 	@When("^user enters (.*) in username field on Register page$")
@@ -45,15 +52,31 @@ public class Register_stepDef {
 		registerPage.validateErrorMsgRegistration(expectedMessage);
 	}
 	
+	@Then("verify error for invalid data from sheetname {string} and row {int} on Register page")
+	public void validate_error_registerPage(String sheetname, int row) throws InvalidFormatException, IOException {
+		registerPage.validateErrorMsgFromExcel(sheetname,row);
+	}
+	
 	@Then("^validate (.*) on Register page$")
 	public void validate_toolTipmessage_registerPage(String expectedMessage) {
 		registerPage.validateToolTipErrorMsgRegistration(expectedMessage);
+	}
+	
+	@Then("Tooltip error validation from sheetname {string} and row {int} on Register page")
+	public void validate_toolTipFromExcel_registerPage(String sheetname, int row) throws InvalidFormatException, IOException {
+		registerPage.validateToolTipErrorMsgExcel(sheetname,row);
 	}
 	
 	@Then("^validate the (.*) on home page after registration for (.*)$")
 	public void validate_the_msg_on_home_page_afterReg(String message, String username) {
 		homePage.validateMsgAfterRegistration(message, username);
 	    
+	}
+	
+	@Then("validate the message after registration from sheetname {string} and row {int} on home page")
+	public void validate_success_msg_from_Excel_onHomePage(String sheetname, int row) throws InvalidFormatException, IOException {
+		homePage.validateMsgFromExcelAfterRegistration(sheetname,row);
+		
 	}
 	
 	@Then("user clicks on Login link")
