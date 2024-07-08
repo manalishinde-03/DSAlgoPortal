@@ -19,11 +19,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import stepDefinitions.Hooks;
 import utilities.ExcelReader;
 
 
 public class DataStructureIntroPage {
 	
+	CommonPage commonPage = new CommonPage(Hooks.driver);	
 	WebDriver driver;
 	
 	@FindBy(xpath ="//a[text()='Time Complexity']" )
@@ -62,60 +64,21 @@ public void clickPracticeQuestionsLink() {
 	Assert.assertEquals(pageTitle, "Practice Questions");
 	
 }
-//use try here from common page 
-public void clickTryHereButton() {
-	Actions action = new Actions(driver);
-	action.scrollToElement(btn_tryHere);
-	
-	 btn_tryHere.click();
-	 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-}
-
-public void executePythonCode(String pythonCode) {
-	
-	text_tryEditor.sendKeys(pythonCode);
-	btn_Run.click();
-	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-	
-	String output = text_output.getText();
-	System.out.println("Python code executed!! Output : "+output);
-	
-}
 
 public void validateAlert(String pythonCode) throws AWTException {
 	
-	executePythonCode(pythonCode);
+	commonPage.try_python_script(driver, pythonCode);
 	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
-	
-	/*
-	 * WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-	 * wait.until(ExpectedConditions.alertIsPresent()); Alert alert =
-	 * driver.switchTo().alert();
-	 * System.out.println(driver.switchTo().alert().getText()); alert.accept();
-	 */
-	
-	Robot r = new Robot();
-	 
-	r.keyPress(KeyEvent.VK_ENTER);
-	r.keyRelease(KeyEvent.VK_ENTER);
-
-	
-	//Alert alert = driver.switchTo().alert();
-	//String alertMessage= driver.switchTo().alert().getText();
-	//System.out.println("Alert Message : "+alertMessage);
-	//alert.accept();
 	
 }
 
 public void executeExcelPythonCode(String sheetname, int row) throws InvalidFormatException, IOException {
 	ExcelReader reader = new ExcelReader();
-
-	List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+	List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
 
 	String code = testdata.get(row).get("python code");
 
-	executePythonCode(code);
+	commonPage.try_python_script(driver, code);
 
 }
 

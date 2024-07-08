@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.cucumber.java.en.Then;
+import pages.CommonPage;
 import pages.DataStructureIntroPage;
 import pages.HomePage;
 
@@ -13,6 +14,7 @@ public class DataStructureIntro_stepDef{
 	HomePage home = new HomePage(Hooks.driver);
 	//LoginPage login;
 	DataStructureIntroPage dsIntro = new DataStructureIntroPage(Hooks.driver);
+	CommonPage commonPage = new CommonPage(Hooks.driver);
 	
 	@Then("user navigates to Data Structures-Introduction page")
 	public void user_navigates_to_data_structures_introduction_page() {
@@ -38,14 +40,15 @@ public class DataStructureIntro_stepDef{
 	@Then("user clicks on Try Here button on Time Complexity page")
 	public void user_clicks_on_try_here_button_on_time_complexity_page() {
 		
-		dsIntro.clickTryHereButton();
+		//dsIntro.clickTryHereButton();
+		commonPage.click_tryhere_with_timeout(Hooks.driver, 5);
 	   
 	}
 
 	@Then("^user executes (.*) successfully$")
 	public void user_executes_pythonCode_successfully(String pythonCode) {
 		
-		dsIntro.executePythonCode(pythonCode);
+		commonPage.try_python_script(Hooks.driver, pythonCode);
 	   
 	}
 	

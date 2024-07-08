@@ -14,17 +14,6 @@ Feature: Validate Data Structure Introduction Module
       | tryEditor |         0 |
       | tryEditor |         1 |
 
-  @TC_01
-  Scenario Outline: Verify Navigation to Data Structures-Introduction page
-    Given user navigates to Home page
-    And user navigates to Login page
-    When user enters <username> and <password> on Login page
-    And user clicks on Login button
-    Then user navigates to Data Structures-Introduction page
-
-    Examples: 
-      | username   | password  |
-      | techtitans | Time2fly$ |
 
   @TC_02
   Scenario Outline: Validate Time Complexity link

@@ -21,8 +21,6 @@ public class Hooks {
 	@Before
 	public void setUp() throws IOException {
 
-		System.out.println("I'm in hooks.....");
-
 		configProp = ConfigReader.initializeProp();
 		DriverFactory.initBrowser(configProp.getProperty("browser"));
 		driver = DriverFactory.getDriver();
@@ -36,8 +34,7 @@ public class Hooks {
 
 	@After
 	public void tearDown() {
-		System.out.println(">>>>>>in after method");
-		driver.quit();
+		//driver.quit();
 	}
 
 }
