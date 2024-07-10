@@ -25,7 +25,7 @@ public class ExcelReader {
 
 		Workbook workbook = WorkbookFactory.create(new File(excelFilePath));
 		Sheet sheet = workbook.getSheet(sheetName);
-		//workbook.close();
+		workbook.close();
 		return readSheet(sheet);
 	}
 

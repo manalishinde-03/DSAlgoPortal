@@ -12,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import utilities.ConfigReader;
 import utilities.ExcelReader;
 import utilities.LoggerLoad;
 
@@ -86,9 +87,15 @@ public class LoginPage {
 
 	public void enterExcelDataForLogin(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 
-		ExcelReader reader = new ExcelReader();
-
-		List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);
+		//ExcelReader reader = new ExcelReader();
+        ConfigReader configReader = new ConfigReader();
+        Properties properties = configReader.initializeProp();
+        
+        String excelFilePath = properties.getProperty("excelPath");        
+        ExcelReader excelReader = new ExcelReader();
+        List<Map<String, String>> testdata = excelReader.getData(excelFilePath, sheetname);
+        
+		//List<Map<String, String>> testdata = reader.getData("C:\\Users\\manal_\\git\\DSAlgoPortal\\DSAlgoPortal\\src\\test\\resources\\ExcelTestData\\LoginData.xlsx", sheetname);		
 
 		String username = testdata.get(rownumber).get("username");
 		String password = testdata.get(rownumber).get("password");

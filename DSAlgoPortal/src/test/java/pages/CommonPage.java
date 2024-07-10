@@ -1,7 +1,10 @@
 package pages;
 
+import java.io.IOException;
 import java.time.Duration;
-
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -12,9 +15,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import utilities.ConfigReader;
+import utilities.ExcelReader;
+
 public class CommonPage{
 	
 	public WebDriver driver;
+	public ConfigReader configReader;
 	 @FindBy(xpath="//button[text()='Run']") WebElement Run;
 	 @FindBy(xpath="//a[text()='Sign out']") WebElement Signout;
 	
@@ -68,6 +76,54 @@ public class CommonPage{
  	}
 	public void Signout() {
 		Signout.click();
+	}
+
+//	public void try_python_script_excel(String sheetname, int row) throws InvalidFormatException, IOException {
+//		ExcelReader reader = new ExcelReader();
+//
+//		List<Map<String, String>> testdata = reader.getData(sheetname);
+//
+//		String code = testdata.get(row).get("python code");
+//
+//		try_python(code);
+//		
+//	}
+    public void try_python_script_excel(String sheetname, int row) throws InvalidFormatException, IOException {
+        ConfigReader configReader = new ConfigReader();
+        Properties properties = configReader.initializeProp();
+        
+        String excelFilePath = properties.getProperty("excelPath");
+        
+        ExcelReader excelReader = new ExcelReader();
+        List<Map<String, String>> testdata = excelReader.getData(excelFilePath, sheetname);
+
+        String code = testdata.get(row).get("python code");
+
+        try_python(code);
+    }
+    
+	private void try_python(String code) {
+		try {
+		WebElement editsheet = driver.findElement(By.xpath("//div[@class='input']/div/div/textarea"));
+		
+		editsheet.sendKeys(code);
+		Run.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		if (isAlertPresent(driver)) {
+			Alert alert = driver.switchTo().alert();
+			String alertText = alert.getText();
+			System.out.println("Alert Text: " + alertText);
+			alert.accept(); // Handle the alert
+			System.out.println(code + "execution error");
+		} else {
+			// If no alert is present, proceed with further actions
+			System.out.println("No alert was present.");
+			System.out.println(code + "executed successfully");
+		}
+	} catch (Exception e) {
+		System.out.println("Exception occurred: " + e.getMessage());
+	}
+
 	}
 
 

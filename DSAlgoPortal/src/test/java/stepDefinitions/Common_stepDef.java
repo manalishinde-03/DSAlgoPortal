@@ -34,6 +34,7 @@ public class Common_stepDef {
 	public void user_enters_sheet(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 		loginPage = new LoginPage(Hooks.driver);
 		loginPage.enterExcelDataForLogin(sheetname, rownumber);
+	
 		
 	}
 	
@@ -63,7 +64,13 @@ public class Common_stepDef {
 		commonPage.click_tryhere_with_timeout(Hooks.driver, 10);
 		commonPage.try_python_script(Hooks.driver, "print('Hello World')");
 	}
+	@Then("user executes code from  sheetname {string} and row number {int}")
+	public void datadriven_tryeditor(String sheetname,int row)throws InvalidFormatException, IOException  {
+		commonPage.try_python_script_excel(sheetname,row);
+		commonPage.driver.navigate().back();// negative test.. it should fail
+	}
 
+	
 	@Then("user goes to previous page")
 	public void graph_user_goes_to_previous_page() {
 		commonPage.driver.navigate().back();

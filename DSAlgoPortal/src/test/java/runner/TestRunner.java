@@ -13,11 +13,17 @@ import io.cucumber.junit.Cucumber;
 	@CucumberOptions(
 			plugin = {"pretty", "html:target/htmlReports/testReport.html"}, //reporting purpose
 			monochrome=false,  //console output colour
-			tags = "@DSAlgoLoginFunctionality", //tags from feature file
+			//tags = "@DSAlgoLoginFunctionality", //tags from feature file
 			//tags = "@TC_Register_01",
 			//tags = "@TC_066",
 			//tags = "@DSAlgoHomePageValidation",
-			features = {"src/test/resources/features/Login.feature"}, //location of feature files
+			//tags="@DropboxGraph",
+			//tags="@TC_G5 and @TC_G3",
+			//tags ="@GettingStartedGraphRepresentation",
+			//tags ="@DataDrivenInput",
+			//tags ="@InvalidPythonCode",
+			//tags="@TC_T14",
+			features = {"src/test/resources/features/Tree.feature","src/test/resources/features/Graph.feature"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
 
