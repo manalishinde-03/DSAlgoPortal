@@ -75,7 +75,7 @@ public class Graph_StepDef {
 	@Then("Graph user clicks tryhere button")
 	public void graph_user_clicks_tryhere_button() {
 		driver = driverFactory.getDriver();
-		CommonPF.click_tryhere_with_timeout(driver, 20);
+		CommonPF.click_tryhere_with_timeout(driver, 10);
 	}
 
 	@Then("Graph user should be directed to tryEditor write non python code and clicks run button")

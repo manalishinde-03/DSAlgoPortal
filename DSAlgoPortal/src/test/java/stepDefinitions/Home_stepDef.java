@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import driverManager.DriverFactory;
 import io.cucumber.java.en.Then;
 import pages.HomePage;
-import utilities.RetryElementLocator;
 
 public class Home_stepDef {
 	

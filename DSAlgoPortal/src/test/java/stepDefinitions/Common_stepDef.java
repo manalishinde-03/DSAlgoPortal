@@ -26,13 +26,11 @@ public class Common_stepDef {
 		
 		driver = driverFactory.getDriver();
 		homePage = new HomePage(driver);
-		System.out.println("user_navigates_to_home_page >>>>>Thread ID :"+Thread.currentThread().threadId());
 	}
 
 	@Given("user navigates to Login page")
 	public void user_navigates_to_login_page() {
 		homePage.clickSignIn();
-		System.out.println("Thread ID :"+Thread.currentThread().threadId());
 	}
 
 	@When("user enters sheet {string} and {int}")

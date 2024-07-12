@@ -50,12 +50,12 @@ public class DataStructureIntroPage {
 	WebElement btn_Run;
 
 	public DataStructureIntroPage(WebDriver driver) {
-		this.driver = driver;
+		driver = driverFactory.getDriver();
 		PageFactory.initElements(driver, this);
 	}
 
 	public void clickTimeComplexityLink() {
-
+		driver = driverFactory.getDriver();
 		link_TimeComplexity.click();
 		String pageTitle = driver.getTitle();
 		Assert.assertEquals(pageTitle, "Time Complexity");
@@ -63,6 +63,7 @@ public class DataStructureIntroPage {
 
 	public void clickPracticeQuestionsLink() {
 		link_PracticeQuestions.click();
+		driver = driverFactory.getDriver();
 		String pageTitle = driver.getTitle();
 		Assert.assertEquals(pageTitle, "Practice Questions");
 
@@ -80,7 +81,7 @@ public class DataStructureIntroPage {
 		ExcelReader reader = new ExcelReader();
 		List<Map<String, String>> testdata = reader.getData(configprop.initializeProp().getProperty("excelFilePath"),
 				sheetname);
-		
+
 		String code = testdata.get(row).get("python code");
 		driver = driverFactory.getDriver();
 		commonPage = new CommonPage(driver);
