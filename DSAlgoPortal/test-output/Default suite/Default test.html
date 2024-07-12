@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Jul 10 15:39:31 CDT 2024</td>
+<td>Started on:</td><td>Fri Jul 12 16:18:13 CDT 2024</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (497 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (414 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,11 +76,23 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='runner.TestRunner.setUpClass()'><b>setUpClass</b><br>Test class: runner.TestRunner<br>Parameters: org.testng.TestRunner@3dd1dc90</td>
-<td><div><pre>java.lang.IllegalArgumentException: Feature not found: classpath:Graph.feature
-	at io.cucumber.core.runtime.FeaturePathFeatureSupplier.loadFeatures(FeaturePathFeatureSupplier.java:64)
-	at io.cucumber.core.runtime.FeaturePathFeatureSupplier.get(FeaturePathFeatureSupplier.java:45)
-	at io.cucumber.testng.TestNGCucumberRunner.&lt;init&gt;(TestNGCucumberRunner.java:122)
+<td title='runner.TestRunner.setUpClass()'><b>setUpClass</b><br>Test class: runner.TestRunner<br>Parameters: org.testng.TestRunner@5c153b9e</td>
+<td><div><pre>java.lang.IllegalArgumentException: The plugin specification &apos;io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm&apos; has a problem:
+
+Could not load plugin class &apos;io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm&apos;.
+
+Plugin specifications should have the format of PLUGIN[:[PATH|[URI [OPTIONS]]]
+
+Valid values for PLUGIN are: html, json, junit, message, pretty, progress, rerun, summary, teamcity, testng, timeline, unused, usage
+
+PLUGIN can also be a fully qualified class name, allowing registration of 3rd party plugins. The 3rd party plugin must implement io.cucumber.plugin.Plugin
+	at io.cucumber.core.options.PluginOption.createCouldNotLoadClass(PluginOption.java:167)
+	at io.cucumber.core.options.PluginOption.parsePluginName(PluginOption.java:145)
+	at io.cucumber.core.options.PluginOption.parse(PluginOption.java:100)
+	at io.cucumber.core.options.RuntimeOptionsBuilder.addPluginName(RuntimeOptionsBuilder.java:68)
+	at io.cucumber.core.options.CucumberOptionsAnnotationParser.addPlugins(CucumberOptionsAnnotationParser.java:85)
+	at io.cucumber.core.options.CucumberOptionsAnnotationParser.parse(CucumberOptionsAnnotationParser.java:39)
+	at io.cucumber.testng.TestNGCucumberRunner.&lt;init&gt;(TestNGCucumberRunner.java:85)
 	at io.cucumber.testng.AbstractTestNGCucumberTests.setUpClass(AbstractTestNGCucumberTests.java:27)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -108,11 +120,29 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1885922916", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1885922916'><pre>java.lang.IllegalArgumentException: Feature not found: classpath:Graph.feature
-	at io.cucumber.core.runtime.FeaturePathFeatureSupplier.loadFeatures(FeaturePathFeatureSupplier.java:64)
-	at io.cucumber.core.runtime.FeaturePathFeatureSupplier.get(FeaturePathFeatureSupplier.java:45)
-	at io.cucumber.testng.TestNGCucumberRunner.&lt;init&gt;(TestNGCucumberRunner.java:122)
+Caused by: java.lang.ClassNotFoundException: io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at io.cucumber.core.options.PluginOption.parsePluginName(PluginOption.java:139)
+	... 32 more
+</pre></div><a href='#' onClick='toggleBox("stack-trace807322507", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace807322507'><pre>java.lang.IllegalArgumentException: The plugin specification &apos;io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm&apos; has a problem:
+
+Could not load plugin class &apos;io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm&apos;.
+
+Plugin specifications should have the format of PLUGIN[:[PATH|[URI [OPTIONS]]]
+
+Valid values for PLUGIN are: html, json, junit, message, pretty, progress, rerun, summary, teamcity, testng, timeline, unused, usage
+
+PLUGIN can also be a fully qualified class name, allowing registration of 3rd party plugins. The 3rd party plugin must implement io.cucumber.plugin.Plugin
+	at io.cucumber.core.options.PluginOption.createCouldNotLoadClass(PluginOption.java:167)
+	at io.cucumber.core.options.PluginOption.parsePluginName(PluginOption.java:145)
+	at io.cucumber.core.options.PluginOption.parse(PluginOption.java:100)
+	at io.cucumber.core.options.RuntimeOptionsBuilder.addPluginName(RuntimeOptionsBuilder.java:68)
+	at io.cucumber.core.options.CucumberOptionsAnnotationParser.addPlugins(CucumberOptionsAnnotationParser.java:85)
+	at io.cucumber.core.options.CucumberOptionsAnnotationParser.parse(CucumberOptionsAnnotationParser.java:39)
+	at io.cucumber.testng.TestNGCucumberRunner.&lt;init&gt;(TestNGCucumberRunner.java:85)
 	at io.cucumber.testng.AbstractTestNGCucumberTests.setUpClass(AbstractTestNGCucumberTests.java:27)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -140,9 +170,15 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: java.lang.ClassNotFoundException: io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at io.cucumber.core.options.PluginOption.parsePluginName(PluginOption.java:139)
+	... 32 more
 </pre></div></td>
 <td>0</td>
-<td>runner.TestRunner@268f106e</td></tr>
+<td>runner.TestRunner@5e4bd84a</td></tr>
 </table><p>
 </body>
 </html>

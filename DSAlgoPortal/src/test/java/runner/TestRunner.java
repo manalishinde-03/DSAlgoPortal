@@ -11,19 +11,14 @@ import io.cucumber.junit.Cucumber;
 //@RunWith(Cucumber.class) //Junit execution
 
 	@CucumberOptions(
-			plugin = {"pretty", "html:target/htmlReports/testReport.html"}, //reporting purpose
+			plugin = {"pretty", "html:target/htmlReports/testReport.html",
+					"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+					"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+					}, //reporting purpose
 			monochrome=false,  //console output colour
 			//tags = "@DSAlgoLoginFunctionality", //tags from feature file
-			//tags = "@TC_Register_01",
-			//tags = "@TC_066",
-			//tags = "@DSAlgoHomePageValidation",
-			//tags="@DropboxGraph",
-			//tags="@TC_G5 and @TC_G3",
-			//tags ="@GettingStartedGraphRepresentation",
-			//tags ="@DataDrivenInput",
-			//tags ="@InvalidPythonCode",
-			//tags="@TC_T14",
-			features = {"src/test/resources/features/Tree.feature","src/test/resources/features/Graph.feature"}, //location of feature files
+            //tags="@TC_T1",
+			features = {"src/test/resources/features/Graph.feature"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
 

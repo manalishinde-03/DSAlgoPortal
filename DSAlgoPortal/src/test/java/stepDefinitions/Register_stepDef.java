@@ -2,6 +2,9 @@ package stepDefinitions;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
+
+import driverManager.DriverFactory;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,11 +14,17 @@ import pages.LoginPage;
 import pages.RegisterPage;
 
 public class Register_stepDef {
+	HomePage homePage; 
+	LoginPage loginPage; 
+	RegisterPage registerPage; 
+	private DriverFactory driverFactory = new DriverFactory();
+	private WebDriver driver;
+	public Register_stepDef() {
 	
-	HomePage homePage = new HomePage(Hooks.driver);
-	LoginPage loginPage = new LoginPage(Hooks.driver);
-	RegisterPage registerPage = new RegisterPage(Hooks.driver);
-	
+    this. homePage = new HomePage(driver);
+	this. loginPage = new LoginPage(driver);
+	this. registerPage = new RegisterPage(driver);
+	}
 	@Given("user navigates to Register page")
 	public void user_navigates_to_register_page() {
 		homePage.clickRegister();

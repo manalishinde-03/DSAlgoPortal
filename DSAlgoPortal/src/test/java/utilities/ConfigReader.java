@@ -7,11 +7,16 @@ import java.util.Properties;
 
 public class ConfigReader {
 	
-	Properties prop;
+	static Properties prop;
 	
-	public Properties initializeProp() {
+	public static Properties initializeProp() {
 		
-		prop= new Properties();
+		try {
+			prop= new Properties();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		try {
 			FileInputStream inputProp = new FileInputStream("./src/test/resources/config/config.properties");

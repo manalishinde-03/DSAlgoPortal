@@ -1,5 +1,8 @@
 package stepDefinitions;
 
+import org.openqa.selenium.WebDriver;
+
+import driverManager.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,24 +14,33 @@ public class Tree_stepDef {
 	
 	TreePage TreePF;
 	CommonPage CommonPF;
+	private DriverFactory driverFactory = new DriverFactory();
+	private WebDriver driver;
+	
 	public Tree_stepDef() 
 	{
-		this.TreePF = new TreePage(Hooks.driver);
-		this.CommonPF = new CommonPage(Hooks.driver);
+		this.TreePF = new TreePage(driver);
+		this.CommonPF = new CommonPage(driver);
 	}
  @When("user selects Tree from the drop down menu")
  public void user_selects_Tree_from_the_drop_down_menu()
  {
+	 driver = driverFactory.getDriver();
+		CommonPF=new CommonPage(driver);
 	 CommonPF.Handledropbox(); 
  }
  @Then("user navigated to Tree Page")
  public void user_should_be_navigated_to_Tree_Page() {
+	 driver =driverFactory.getDriver();
+		TreePF=new TreePage(driver);
 	 TreePF.TreeOptions();
  }
 
  @When("user clicks the GetStarted button in Tree Panel")
  public void user_clicks_the_GetStarted_button_in_Tree_Panel()
  {
+	 driver =driverFactory.getDriver();
+		TreePF=new TreePage(driver);
 	 TreePF.GetStarted();
  }
  @And("user clicks OverviewofTrees link")
