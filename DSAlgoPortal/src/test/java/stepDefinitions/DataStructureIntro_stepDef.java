@@ -48,7 +48,7 @@ public class DataStructureIntro_stepDef{
 	public void user_clicks_on_try_here_button_on_time_complexity_page() {
 		driver = driverFactory.getDriver();
 		commonPage = new CommonPage(driver);
-		commonPage.click_tryhere_with_timeout(driver, 10);
+		commonPage.click_tryhere_with_timeout(driver, 2);
 	   
 	}
 

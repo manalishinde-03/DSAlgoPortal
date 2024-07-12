@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +25,8 @@ public class CommonPage {
 	WebElement Signout;
 	@FindBy(xpath = "//pre[@id='output']")
 	WebElement text_output;
+	@FindBy(linkText ="Try here>>>" )
+	WebElement btn_tryHere;
 
 	// Constructor
 
@@ -38,10 +41,16 @@ public class CommonPage {
 	}
 
 	public void click_tryhere_with_timeout(WebDriver driver, int timeout) {
+		driver = driverFactory.getDriver();
+//		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+//		WebElement Tryhere = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Try here>>>")));
+		//Tryhere.click();
+		Actions action = new Actions(driver);
+		action.scrollToElement(btn_tryHere);
+		btn_tryHere.click();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
 
-		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-		WebElement Tryhere = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Try here>>>")));
-		Tryhere.click();
+		
 	}
 
 	public void try_python_script(WebDriver driver, String pythontext) {

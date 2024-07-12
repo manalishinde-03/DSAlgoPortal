@@ -29,12 +29,13 @@ public class Hooks {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(configProp.getProperty("url"));
+		System.out.println("URL :>>>"+configProp.getProperty("url"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		driver.findElement(By.xpath("//button[text()='Get Started']")).click();
 	}
 
 	@After(order = 1)
-	public void takeScraenshotOnFailure(Scenario scenario) {
+	public void takeScreenshotOnFailure(Scenario scenario) {
 
 		if (scenario.isFailed()) {
 
