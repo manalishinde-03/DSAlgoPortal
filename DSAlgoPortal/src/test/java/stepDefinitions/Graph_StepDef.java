@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import driverManager.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,13 +13,17 @@ import pages.CommonPage;
 import pages.GraphPage;
 
 public class Graph_StepDef {
-	//GraphPage graph=new GraphPage(Hooks.driver);
+	//GraphPage graph=new GraphPage(driver);
 	GraphPage GraphPF;
 	CommonPage CommonPF;
+	private DriverFactory driverFactory = new DriverFactory();
+	private WebDriver driver;
+	
 	public Graph_StepDef() 
 	{
-		this.GraphPF = new GraphPage(Hooks.driver);
-		this.CommonPF = new CommonPage(Hooks.driver);
+		driver = driverFactory.getDriver();
+		this.GraphPF = new GraphPage(driver);
+		this.CommonPF = new CommonPage(driver);
 	}
 //	@Given ("user navigates to Homegraph page")
 //	public void home_page() {}
@@ -53,7 +58,7 @@ public class Graph_StepDef {
 
 	@Then("User goes to previous page")
 	public void user_goes_to_previous_page() {
-		CommonPF.driver.navigate().back();
+		//CommonPF.driver.navigate().back();
 	}
 
 	@When("User clicks the GetStarted button in Graph Panel")
@@ -63,39 +68,43 @@ public class Graph_StepDef {
 
 	@Then("User clicks Graph link")
 	public void user_clicks_Graph_link() {
-		GraphPF.Graph(Hooks.driver,10);
+		driver = driverFactory.getDriver();
+		GraphPF.Graph(driver,10);
 	}
 
 	@Then("Graph user clicks tryhere button")
 	public void graph_user_clicks_tryhere_button() {
-		CommonPF.click_tryhere_with_timeout(Hooks.driver, 20);
+		driver = driverFactory.getDriver();
+		CommonPF.click_tryhere_with_timeout(driver, 20);
 	}
 
 	@Then("Graph user should be directed to tryEditor write non python code and clicks run button")
 	public void graph_user_should_be_directed_to_try_editor_write_non_python_code_and_clicks_run_button() {
-		CommonPF.try_python_script(Hooks.driver, "Hello World");
-		CommonPF.driver.navigate().back();// negative test.. it should fail
+		driver = driverFactory.getDriver();
+		CommonPF.try_python_script(driver, "Hello World");
+		//CommonPF.driver.navigate().back();// negative test.. it should fail
 	}
 
 	@Then("Graph user write python code and clicks run button and it will display output")
 	public void graph_user_write_python_code_and_clicks_run_button_and_it_will_display_output() {
-		CommonPF.click_tryhere_with_timeout(Hooks.driver, 10);
-		CommonPF.try_python_script(Hooks.driver, "print('Hello World')");
+		driver = driverFactory.getDriver();
+		CommonPF.click_tryhere_with_timeout(driver, 10);
+		CommonPF.try_python_script(driver, "print('Hello World')");
 	}
 
 	@Then("Graph user goes to previous page")
 	public void graph_user_goes_to_previous_page() {
-		CommonPF.driver.navigate().back();
+		//CommonPF.driver.navigate().back();
 	}
 	
 	@Then("Graph user goes back to graph page")
 	public void graph_user_goes_back_to_previous_page() {
-		CommonPF.driver.navigate().back();
+		//CommonPF.driver.navigate().back();
 	}
 	
 	@Then ("Graph user goes back to home page")
 	public void graph_user_goes_back_to_home_page() {
-		CommonPF.driver.navigate().back();
+		//CommonPF.driver.navigate().back();
 	}
 
 	@Then("User clicks GraphRepresentations link")
@@ -109,7 +118,8 @@ public class Graph_StepDef {
 
 	@Then("logged out successfully message will be displayed")
 	public void logged_out_successfully_message_will_be_displayed() {
-		WebElement signout=Hooks.driver.findElement(By.xpath("/html/body/div[2]"));
+		driver = driverFactory.getDriver();
+		WebElement signout=driver.findElement(By.xpath("/html/body/div[2]"));
 		System.out.println(signout.getText());
 	}
 

@@ -114,7 +114,7 @@ public class HomePage{
 		link_SignOut.click();
 	}
 	public void clickGetStartedOnHomePage() {
-		this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		btn_GetStartedHome.click();
 		
 		  String homePageTitle = driver.getTitle(); 

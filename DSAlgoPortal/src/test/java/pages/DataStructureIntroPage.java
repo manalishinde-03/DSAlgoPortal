@@ -18,70 +18,74 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import driverManager.DriverFactory;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import stepDefinitions.Hooks;
+import utilities.ConfigReader;
 import utilities.ExcelReader;
 
-
 public class DataStructureIntroPage {
-	
-	CommonPage commonPage = new CommonPage(Hooks.driver);	
-	WebDriver driver;
-	
-	@FindBy(xpath ="//a[text()='Time Complexity']" )
+
+	CommonPage commonPage;
+	ConfigReader configprop;
+	private DriverFactory driverFactory = new DriverFactory();
+	private WebDriver driver;
+
+	@FindBy(xpath = "//a[text()='Time Complexity']")
 	WebElement link_TimeComplexity;
-	
-	@FindBy(xpath ="//a[text()='Practice Questions']" )
+
+	@FindBy(xpath = "//a[text()='Practice Questions']")
 	WebElement link_PracticeQuestions;
-	
-	@FindBy(linkText ="Try here>>>" )
+
+	@FindBy(linkText = "Try here>>>")
 	WebElement btn_tryHere;
-	
-	@FindBy(xpath ="//div[@class='input']/div/div/textarea")
+
+	@FindBy(xpath = "//div[@class='input']/div/div/textarea")
 	WebElement text_tryEditor;
-	
-	@FindBy(xpath ="//pre[@id='output']")
+
+	@FindBy(xpath = "//pre[@id='output']")
 	WebElement text_output;
-	
-	@FindBy(xpath="//button[text()='Run']")
+
+	@FindBy(xpath = "//button[text()='Run']")
 	WebElement btn_Run;
-	
-public DataStructureIntroPage(WebDriver driver) {
-	this.driver = driver;
-		PageFactory.initElements(driver,this);
+
+	public DataStructureIntroPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
-public void clickTimeComplexityLink() {
-	
-	link_TimeComplexity.click();
-	String pageTitle = driver.getTitle();
-	Assert.assertEquals(pageTitle, "Time Complexity");
-}
+	public void clickTimeComplexityLink() {
 
-public void clickPracticeQuestionsLink() {
-	link_PracticeQuestions.click();
-	String pageTitle = driver.getTitle();
-	Assert.assertEquals(pageTitle, "Practice Questions");
-	
-}
+		link_TimeComplexity.click();
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle, "Time Complexity");
+	}
 
-public void validateAlert(String pythonCode) throws AWTException {
-	
-	commonPage.try_python_script(driver, pythonCode);
-	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-	
-}
+	public void clickPracticeQuestionsLink() {
+		link_PracticeQuestions.click();
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle, "Practice Questions");
 
-public void executeExcelPythonCode(String sheetname, int row) throws InvalidFormatException, IOException {
-	ExcelReader reader = new ExcelReader();
-	List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
+	}
 
-	String code = testdata.get(row).get("python code");
+	public void validateAlert(String pythonCode) throws AWTException {
+		driver = driverFactory.getDriver();
+		commonPage = new CommonPage(driver);
+		commonPage.try_python_script(driver, pythonCode);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-	commonPage.try_python_script(driver, code);
+	}
 
-}
+	public void executeExcelPythonCode(String sheetname, int row) throws InvalidFormatException, IOException {
+		ExcelReader reader = new ExcelReader();
+		List<Map<String, String>> testdata = reader.getData(configprop.initializeProp().getProperty("excelFilePath"),
+				sheetname);
+		
+		String code = testdata.get(row).get("python code");
+		driver = driverFactory.getDriver();
+		commonPage = new CommonPage(driver);
+		commonPage.try_python_script(driver, code);
 
-
+	}
 
 }

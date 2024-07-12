@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GraphPage {
-	public WebDriver driver;
+	 WebDriver driver;
 	  @FindBy(xpath="//a[text()='Graph']")WebElement GraphOptions;
 	  @FindBy(xpath="/html/body/div[3]/div[7]/div/div/a")WebElement GetStarted;
 	  @FindBy(xpath="//div/ul[2]/a[text()='Graph']")WebElement Graph;

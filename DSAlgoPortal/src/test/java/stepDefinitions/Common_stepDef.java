@@ -18,43 +18,34 @@ public class Common_stepDef {
 
 	HomePage homePage;
 	LoginPage loginPage;
-	
-	public static WebDriver driver;  
-	
-	/*
-	 * @Given("User is on the Login page") public void user_launches_login_page()
-	 * throws IOException { //driver = DriverFactory.getDriver();
-	 * //driver=Hooks.driver; homePage = new HomePage(driver);
-	 * homePage.clickSignIn();
-	 * 
-	 * System.out.println("Im in Login page....");
-	 * 
-	 * }
-	 */
+	private DriverFactory driverFactory = new DriverFactory();
+	private WebDriver driver;
 
 	@Given("user navigates to Home page")
 	public void user_navigates_to_home_page() throws IOException {
-		homePage = new HomePage(Hooks.driver);
 		
+		driver = driverFactory.getDriver();
+		homePage = new HomePage(driver);
+		System.out.println("user_navigates_to_home_page >>>>>Thread ID :"+Thread.currentThread().threadId());
 	}
 
 	@Given("user navigates to Login page")
 	public void user_navigates_to_login_page() {
-		//homePage = new HomePage(driver);
 		homePage.clickSignIn();
-
+		System.out.println("Thread ID :"+Thread.currentThread().threadId());
 	}
 
 	@When("user enters sheet {string} and {int}")
 	public void user_enters_sheet(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
-		loginPage = new LoginPage(Hooks.driver);
+		driver = driverFactory.getDriver();
+		loginPage = new LoginPage(driver);
 		loginPage.enterExcelDataForLogin(sheetname, rownumber);
-		
 	}
 	
 	@When("^user enters (.*) and (.*) on Login page$")
 	public void user_enters_username_and_password_on_login_page(String username, String password) {
-		loginPage = new LoginPage(Hooks.driver);
+		driver = driverFactory.getDriver();
+		loginPage = new LoginPage(driver);
 		loginPage.enterDataForLogin(username, password);
 	}
 

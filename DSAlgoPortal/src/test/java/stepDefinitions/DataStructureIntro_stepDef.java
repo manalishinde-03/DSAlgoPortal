@@ -3,6 +3,9 @@ package stepDefinitions;
 import java.awt.AWTException;
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
+
+import driverManager.DriverFactory;
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import io.cucumber.java.en.Then;
 import pages.CommonPage;
@@ -11,44 +14,49 @@ import pages.HomePage;
 
 public class DataStructureIntro_stepDef{
 	
-	HomePage home = new HomePage(Hooks.driver);
-	//LoginPage login;
-	DataStructureIntroPage dsIntro = new DataStructureIntroPage(Hooks.driver);
-	CommonPage commonPage = new CommonPage(Hooks.driver);
+	HomePage home; 
+	DataStructureIntroPage dsIntro; 
+	CommonPage commonPage;
+	private DriverFactory driverFactory = new DriverFactory();
+	private WebDriver driver;
 	
 	@Then("user navigates to Data Structures-Introduction page")
 	public void user_navigates_to_data_structures_introduction_page() {
-		//home= new HomePage();
+		driver = driverFactory.getDriver();
+		home = new HomePage(driver);
 		home.clickGetStartedOnHomePage();
 	   
 	}
 
 	@Then("user clicks on Time Complexity link")
 	public void user_clicks_on_time_complexity_link() {
-		//dsIntro = new DataStructureIntroPage();
+		driver = driverFactory.getDriver();
+		dsIntro = new DataStructureIntroPage(driver);
 		dsIntro.clickTimeComplexityLink();
 	    
 	}
 
 	@Then("user clicks on Practice Questions link")
 	public void user_clicks_on_practice_questions_link() {
-		
+		driver = driverFactory.getDriver();
+		dsIntro = new DataStructureIntroPage(driver);
 		dsIntro.clickPracticeQuestionsLink();
 	    
 	}
 
 	@Then("user clicks on Try Here button on Time Complexity page")
 	public void user_clicks_on_try_here_button_on_time_complexity_page() {
-		
-		//dsIntro.clickTryHereButton();
-		commonPage.click_tryhere_with_timeout(Hooks.driver, 5);
+		driver = driverFactory.getDriver();
+		commonPage = new CommonPage(driver);
+		commonPage.click_tryhere_with_timeout(driver, 10);
 	   
 	}
 
 	@Then("^user executes (.*) successfully$")
 	public void user_executes_pythonCode_successfully(String pythonCode) {
-		
-		commonPage.try_python_script(Hooks.driver, pythonCode);
+		driver = driverFactory.getDriver();
+		commonPage = new CommonPage(driver);
+		commonPage.try_python_script(driver, pythonCode);
 	   
 	}
 	
