@@ -3,6 +3,7 @@ Feature: DSAlgo Portal Login Verification
 
   @TC_Login_01
   Scenario Outline: Sign In successful with valid credentials
+    #Given User is on the Login page
     Given user navigates to Home page
     And user navigates to Login page
     When user enters sheet "<Sheetname>" and <RowNumber>
@@ -100,7 +101,6 @@ Feature: DSAlgo Portal Login Verification
   #Examples:
   #| username   | password   | error message                 |
   #| techtitans | Time2fly$1 | Invalid Username and Password |
-  
   @TC_006
   Scenario: Verify Register link on Login page
     Given user navigates to Home page

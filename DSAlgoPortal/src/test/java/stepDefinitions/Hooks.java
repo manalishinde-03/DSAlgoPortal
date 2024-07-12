@@ -1,0 +1,59 @@
+package stepDefinitions;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
+import driverManager.DriverFactory;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import utilities.ConfigReader;
+
+public class Hooks {
+
+	private WebDriver driver;
+	public Properties configProp;
+	private DriverFactory driverFactory = new DriverFactory();
+
+	@Before
+	public void setUp() throws IOException {
+
+		configProp = ConfigReader.initializeProp();
+		driver = driverFactory.getDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get(configProp.getProperty("url"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		driver.findElement(By.xpath("//button[text()='Get Started']")).click();
+	}
+
+	@After(order = 1)
+	public void takeScraenshotOnFailure(Scenario scenario) {
+
+		if (scenario.isFailed()) {
+
+			TakesScreenshot ts = (TakesScreenshot) driver;
+
+			byte[] src = ts.getScreenshotAs(OutputType.BYTES);
+			scenario.attach(src, "image/png", "screenshot");
+		}
+
+	}
+
+	@After(order = 0)
+	public void tearDown() {
+		if (driver != null) {
+			driverFactory.removeDriver();
+			driver.quit();
+		}
+		System.out.println("Closing browser for -" + Thread.currentThread().threadId());
+
+	}
+
+}

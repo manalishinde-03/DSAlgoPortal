@@ -11,24 +11,19 @@ import io.cucumber.junit.Cucumber;
 //@RunWith(Cucumber.class) //Junit execution
 
 	@CucumberOptions(
-			plugin = {"pretty", "html:target/htmlReports/testReport.html"}, //reporting purpose
+			plugin = {"pretty", "html:target/htmlReports/testReport.html","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, //reporting purpose
 			monochrome=false,  //console output colour
-			tags = "@DSAlgoHomePageValidation", //tags from feature file
+			//tags = "@DSAlgoHomePageValidation", //tags from feature file
 			//tags = "@DSAlgoLoginFunctionality",
-			//tags = "@TC_066",
+			//tags = "@DSAlgoDataStructureIntro",
 			//tags = "@DSAlgoHomePageValidation",
-			features = {"src/test/resources/features/Home.feature"}, //location of feature files
+			features = {"src/test/resources/features/Register.feature"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
 
 	public class TestRunner extends AbstractTestNGCucumberTests{
 		
-		@Override
-	    @DataProvider(parallel = false)
-	    public Object[][] scenarios() {
-					
-			return super.scenarios();	
-	    }
+		
 
 	
 }

@@ -1,12 +1,18 @@
 package pages;
 
+import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import utilities.ExcelReader;
 
 
 public class RegisterPage {
@@ -73,12 +79,44 @@ public class RegisterPage {
 		  WebElement activeElement = driver.switchTo().activeElement();
 		  String messageStr = activeElement.getAttribute("validationMessage");
 		  System.out.println("Actual message appeared on screen: " + messageStr);
+		  Assert.assertEquals(messageStr,errorMessage);
 	}
 	public LoginPage clickLoginLink() {
 		
 		link_Login.click();
 		return new LoginPage(driver);
 	
+	}
+	public void fillRegistrationForm(String sheetname, int row) throws InvalidFormatException, IOException {
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
+
+		String username = testdata.get(row).get("username");
+		String password = testdata.get(row).get("password");
+		String passwordConfirm = testdata.get(row).get("password confirmation");
+		enterUsername(username);
+		enterPassword(password);
+		enterPasswordConfirmation(passwordConfirm);
+		
+	}
+	public void validateToolTipErrorMsgExcel(String sheetname, int row) throws InvalidFormatException, IOException {
+		
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
+
+		String expectedMessage = testdata.get(row).get("message");
+		validateToolTipErrorMsgRegistration(expectedMessage);
+	}
+	public void validateErrorMsgFromExcel(String sheetname, int row) throws InvalidFormatException, IOException {
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
+
+		String expectedMessage = testdata.get(row).get("message");
+		validateErrorMsgRegistration(expectedMessage);
+		
 	}
 
 }
