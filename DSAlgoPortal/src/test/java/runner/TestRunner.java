@@ -11,14 +11,15 @@ import io.cucumber.junit.Cucumber;
 //@RunWith(Cucumber.class) //Junit execution
 
 	@CucumberOptions(
-			plugin = {"pretty", "html:target/htmlReports/testReport.html",
-					"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, //reporting purpose
+			plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+					"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+					"html:target/test-output/htmlReport/report.html"}, //reporting purpose
 			monochrome=false,  //console output colour
 			//tags = "@DSAlgoHomePageValidation", //tags from feature file
 			//tags = "@DSAlgoLoginFunctionality",
 			//tags = "@DSAlgoDataStructureIntro",
 			//tags = "@DSAlgoHomePageValidation",
-			features = {"src/test/resources/features"}, //location of feature files
+			features = {"src/test/resources/features/Login.feature"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
 
