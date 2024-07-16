@@ -64,7 +64,7 @@ Feature: DSAlgo Data Structure Introduction Module Verification
     Then user navigates to Data Structures-Introduction page
     And user clicks on Time Complexity link
     And user clicks on Try Here button on Time Complexity page
-    And user executes code from  sheetname "<Sheetname>" and row number <RowNumber>
+    And user runs the code from  sheetname "<Sheetname>" and row number <RowNumber>
 
     Examples: 
       | Sheetname | RowNumber |
@@ -79,7 +79,7 @@ Feature: DSAlgo Data Structure Introduction Module Verification
     Then user navigates to Data Structures-Introduction page
     And user clicks on Time Complexity link
     And user clicks on Try Here button on Time Complexity page
-    And user executes code from  sheetname "<Sheetname>" and row number <RowNumber>
+    And user runs the code from  sheetname "<Sheetname>" and row number <RowNumber>
 
     Examples: 
       | Sheetname | RowNumber |

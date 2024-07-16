@@ -62,9 +62,11 @@ public class DataStructureIntro_stepDef{
 	   
 	}
 	
-	@Then("user executes code from  sheetname {string} and row number {int}")
-	public void user_executes_pythonCode_from_Excel_successfully(String sheetname, int row) throws InvalidFormatException, IOException{
-		dsIntro.executeExcelPythonCode(sheetname,row);
+	@Then("user runs the code from  sheetname {string} and row number {int}")
+	public void user_executes_pythonCode_from_Excel_successfully(String sheetname, int row) throws InvalidFormatException, IOException, org.apache.poi.openxml4j.exceptions.InvalidFormatException{
+		driver = driverFactory.getDriver();
+		commonPage = new CommonPage(driver);
+		commonPage.try_python_script_excel(sheetname,row);
 	}
 
 	@Then("^user gets alert for invalid (.*)$")
