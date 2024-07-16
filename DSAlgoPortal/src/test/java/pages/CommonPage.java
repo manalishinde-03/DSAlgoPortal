@@ -114,16 +114,18 @@ public class CommonPage {
 //	}
     public void try_python_script_excel(String sheetname, int row) throws InvalidFormatException, IOException {
         ConfigReader configReader = new ConfigReader();
-        Properties properties = configReader.initializeProp();
+        //Properties properties = configReader.initializeProp();
         
-        String excelFilePath = properties.getProperty("excelPath");
+       // String excelFilePath = properties.getProperty("excelPath");
         
         ExcelReader excelReader = new ExcelReader();
-        List<Map<String, String>> testdata = excelReader.getData(excelFilePath, sheetname);
+      //  List<Map<String, String>> testdata = excelReader.getData(excelFilePath, sheetname);
+        List<Map<String, String>> testdata = excelReader.getData(configReader.initializeProp().getProperty("excelFilePath"),
+				sheetname);
 
         String code = testdata.get(row).get("python code");
 
-        try_python(code);
+        try_python_script(driver,code);
     }
     
 	private void try_python(String code) {

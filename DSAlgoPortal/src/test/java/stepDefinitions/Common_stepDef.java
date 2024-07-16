@@ -71,7 +71,7 @@ public class Common_stepDef {
 	@Then("user should be directed to tryEditor write non python code and clicks run button")
 	public void graph_user_should_be_directed_to_try_editor_write_non_python_code_and_clicks_run_button() {
 		this.commonPage.try_python_script(driver, "Hello World");
-		this.commonPage.driver.navigate().back();// negative test.. it should fail
+		//this.commonPage.driver.navigate().back();// negative test.. it should fail
 	}
 
 	@And("user write python code and clicks run button and it will display output")
@@ -82,7 +82,7 @@ public class Common_stepDef {
 	@Then("user executes code from  sheetname {string} and row number {int}")
 	public void datadriven_tryeditor(String sheetname,int row)throws InvalidFormatException, IOException  {
 		this.commonPage.try_python_script_excel(sheetname,row);
-		this.commonPage.driver.navigate().back();// negative test.. it should fail
+		//this.commonPage.driver.navigate().back();// negative test.. it should fail
 	}
 
 	
@@ -97,7 +97,7 @@ public class Common_stepDef {
 	public void user_goes_to_previous_page() {
 		driver = driverFactory.getDriver();
 		commonPage=new CommonPage(driver);
-		this.commonPage.driver.navigate().back();
+		//this.commonPage.driver.navigate().back();
 	}
 	
 }
