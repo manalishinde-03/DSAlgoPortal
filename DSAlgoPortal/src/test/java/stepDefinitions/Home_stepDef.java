@@ -16,7 +16,7 @@ public class Home_stepDef {
 	
 	@Then("user clicks Data Structures dropdown and able to see all options")
 	public void user_is_able_to_see_all_options_in_data_structures_dropdown() {
-		System.out.println("user_is_able_to_see_all_options_in_data_structures_dropdown >>>>>Thread ID :"+Thread.currentThread().threadId());
+	//	System.out.println("user_is_able_to_see_all_options_in_data_structures_dropdown >>>>>Thread ID :"+Thread.currentThread().threadId());
 		driver = driverFactory.getDriver();
 		home = new HomePage(driver);
 		home.validateDataStructuresDropdown();
@@ -25,7 +25,7 @@ public class Home_stepDef {
 
 	@Then("user clicks Register link and navigates to Register page")
 	public void user_clicks_register_link_and_navigates_to_register_page() {
-		System.out.println("user_clicks_register_link_and_navigates_to_register_page >>>>>Thread ID :"+Thread.currentThread().threadId());
+		//System.out.println("user_clicks_register_link_and_navigates_to_register_page >>>>>Thread ID :"+Thread.currentThread().threadId());
 		driver = driverFactory.getDriver();
 		home = new HomePage(driver);
 		home.clickRegister();

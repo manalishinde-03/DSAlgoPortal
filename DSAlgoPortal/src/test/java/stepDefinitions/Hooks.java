@@ -53,7 +53,7 @@ public class Hooks {
 			driverFactory.removeDriver();
 			driver.quit();
 		}
-		System.out.println("Closing browser for -" + Thread.currentThread().threadId());
+		//System.out.println("Closing browser for -" + Thread.currentThread().threadId());
 
 	}
 
