@@ -6,6 +6,8 @@ import java.time.Duration;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import driverManager.DriverFactory;
 
@@ -98,6 +100,21 @@ public class Common_stepDef {
 		driver = driverFactory.getDriver();
 		commonPage=new CommonPage(driver);
 		//this.commonPage.driver.navigate().back();
+	}
+	
+	@Then("user clicks signout link")
+	public void user_clicks_signout_link() {
+		driver = driverFactory.getDriver();
+		commonPage = new CommonPage(driver);
+		commonPage.Signout();
+	}
+
+	
+	@Then("^log out successful (.*) message will be displayed$")
+	public void logged_out_successfully_message_will_be_displayed(String expMessage) {
+		WebElement signoutMsg=driver.findElement(By.xpath("//div[@class='alert alert-primary']"));
+		System.out.println(signoutMsg.getText());
+		Assert.assertEquals(signoutMsg.getText(), expMessage);
 	}
 	
 }
