@@ -50,8 +50,8 @@ public class LoginPage {
 
 	public void clickRegisterLink() {
 		link_register.click();
-		String url = driver.getCurrentUrl();
-		Assert.assertEquals("https://dsportalapp.herokuapp.com/register", url);
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle,"Registration");
 		LoggerLoad.info("User navigated to Register page!");
 	}
 

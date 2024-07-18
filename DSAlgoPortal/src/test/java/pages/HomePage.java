@@ -46,6 +46,8 @@ public class HomePage{
 	WebElement link_Register;
 	@FindBy(linkText ="Get Started")
 	WebElement btn_GetStartedHome;
+	@FindBy(linkText ="NumpyNinja")
+	WebElement link_NumpyNinja;
 	@FindBy(xpath ="//form[@method='post']" )
 	WebElement registrationForm;
 	@FindBy(xpath ="//form[@method='post']" )
@@ -108,23 +110,28 @@ public class HomePage{
 		wait.until(ExpectedConditions.visibilityOf(link_SignIn)).click();
 		
 		Assert.assertEquals(driver.getTitle(),"Login");
-		System.out.println("User landed on Login page!");
+		LoggerLoad.info("User landed on Login page!");
 	}
 	public void clickSignOut() {
 		link_SignOut.click();
 	}
 	public void clickGetStartedOnHomePage() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		btn_GetStartedHome.click();
-		
-		  String homePageTitle = driver.getTitle(); 
-		  //Assert.assertEquals(homePageTitle,"NumpyNinja");
+		 
+	}
+	
+	public void clickNumpyNinjaLink() {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		link_NumpyNinja.click();
+		Assert.assertEquals(driver.getTitle(),"Numpy Ninja");
+		LoggerLoad.info("User landed on Landing page");
 		 
 	}
 	public void clickRegister() {
 		link_Register.click();
 		Assert.assertEquals(driver.getTitle(),"Registration");
-		System.out.println("User landed on Register page!");
+		LoggerLoad.info("User landed on Register page!");
 	}
 
 	public void verifyUsernameSignOutLinkOnHomePage(String username) {
@@ -132,12 +139,12 @@ public class HomePage{
 		  String usernameLowerCase = actualUserName.toLowerCase();
 		  
 		  Assert.assertEquals( usernameLowerCase,username);
-		  System.out.println("Username is displayed to top right corner on Home page");
+		  LoggerLoad.info("Username is displayed to top right corner on Home page");
 		  
 		  if(link_SignOut.isDisplayed()) {
-				System.out.println("Sign out link is displayed");
+			  LoggerLoad.info("Sign out link is displayed");
 			} else {
-				System.out.println("Sign out link is NOT displayed");
+				LoggerLoad.info("Sign out link is NOT displayed");
 			}
 	}
 	public void validateWarningUserNotLoggedIn(String expectedWarning) {
@@ -159,6 +166,31 @@ public class HomePage{
 		 String username = testdata.get(row).get("username");
 		 validateMsgAfterRegistration(expectedMessage,username);
 	}
-	
-	
+
+	public void validateNavigationThroughDropdown(String option) {
+		
+		dropDownDataStructures.click();
+		   
+		List <WebElement> dsOptions = dropDownDataStructuresValues;
+		for (int i = 0; i < dsOptions.size(); i++) { //A
+			
+			if(dsOptions.get(i).getText().contains("Arrays")) {
+				dsOptions.get(i).click();
+				String actualURL = driver.getCurrentUrl();
+				String expURL ="https://dsportalapp.herokuapp.com/array/";
+				Assert.assertEquals(actualURL, expURL);
+				
+				break;
+			}
+			else 
+				if (dsOptions.get(i).getText().contains(option)){
+				dsOptions.get(i).click();
+				String pageTitle = driver.getTitle();
+				Assert.assertEquals(pageTitle, option);
+				
+			}
+		}
+	}
 }
+	
+

@@ -60,23 +60,3 @@ public class DriverFactory {
 	}
 
 	
-	
-
-	/*
-	 * public static void initBrowser(String browserName) { if
-	 * (browserName.equals("chrome")) { // driver = new ChromeDriver();
-	 * 
-	 * tlDriver.set(new ChromeDriver());
-	 * System.out.println("Starting browser for -"+Thread.currentThread().threadId()
-	 * ); }
-	 * 
-	 * if (browserName.equals("firefox")) { // driver = new FirefoxDriver();
-	 * tlDriver.set(new FirefoxDriver()); }
-	 * 
-	 * if (browserName.equals("edge")) { // driver = new EdgeDriver();
-	 * tlDriver.set(new EdgeDriver()); } }
-	 * 
-	 * public static WebDriver getDriver() { return tlDriver.get(); // return
-	 * driver; }
-	 */
-
