@@ -103,57 +103,24 @@ public class CommonPage {
 	}
 
 
-//	public void try_python_script_excel(String sheetname, int row) throws InvalidFormatException, IOException {
-//		ExcelReader reader = new ExcelReader();
-//
-//		List<Map<String, String>> testdata = reader.getData(sheetname);
-//
-//		String code = testdata.get(row).get("python code");
-//
-//		try_python(code);
-//		
-//	}
     public void try_python_script_excel(String sheetname, int row) throws InvalidFormatException, IOException {
         ConfigReader configReader = new ConfigReader();
-        Properties properties = configReader.initializeProp();
+        //Properties properties = configReader.initializeProp();
         
-        String excelFilePath = properties.getProperty("excelPath");
+       // String excelFilePath = properties.getProperty("excelPath");
         
         ExcelReader excelReader = new ExcelReader();
+
+      //  List<Map<String, String>> testdata = excelReader.getData(excelFilePath, sheetname);
         List<Map<String, String>> testdata = excelReader.getData(configReader.initializeProp().getProperty("excelFilePath"),
 				sheetname);
 
-       // List<Map<String, String>> testdata = excelReader.getData(excelFilePath, sheetname);
 
         String code = testdata.get(row).get("python code");
 
-        try_python(code);
+        try_python_script(driver,code);
     }
     
-	private void try_python(String code) {
-		try {
-		WebElement editsheet = driver.findElement(By.xpath("//div[@class='input']/div/div/textarea"));
-		
-		editsheet.sendKeys(code);
-		Run.click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-		if (isAlertPresent(driver)) {
-			Alert alert = driver.switchTo().alert();
-			String alertText = alert.getText();
-			System.out.println("Alert Text: " + alertText);
-			alert.accept(); // Handle the alert
-			System.out.println(code + "execution error");
-		} else {
-			// If no alert is present, proceed with further actions
-			System.out.println("No alert was present.");
-			System.out.println(code + "executed successfully");
-		}
-	} catch (Exception e) {
-		System.out.println("Exception occurred: " + e.getMessage());
-	}
-
-	}
-
-
+	
 
 }

@@ -19,7 +19,7 @@ import io.cucumber.junit.Cucumber;
 			//tags = "@DSAlgoLoginFunctionality",
 			//tags = "@DSAlgoDataStructureIntro",
 			//tags = "@DSAlgoHomePageValidation",
-			features = {"src/test/resources/features/Login.feature"}, //location of feature files
+			features = {"src/test/resources/features/DataStructureIntroduction.feature"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
 

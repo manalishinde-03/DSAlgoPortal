@@ -77,16 +77,5 @@ public class DataStructureIntroPage {
 
 	}
 
-	public void executeExcelPythonCode(String sheetname, int row) throws InvalidFormatException, IOException {
-		ExcelReader reader = new ExcelReader();
-		List<Map<String, String>> testdata = reader.getData(configprop.initializeProp().getProperty("excelFilePath"),
-				sheetname);
-
-		String code = testdata.get(row).get("python code");
-		driver = driverFactory.getDriver();
-		commonPage = new CommonPage(driver);
-		commonPage.try_python_script(driver, code);
-
-	}
-
+	
 }

@@ -47,17 +47,19 @@ public class Login_stepDef {
 	}
 
 	@Then("verify the error message from sheet {string} and {int} on Login page")
-	public void validate_the_error_on_login_page_excel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+	public void validate_the_error_on_login_page_excel(String sheetname, Integer rownumber)
+			throws InvalidFormatException, IOException {
 		driver = driverFactory.getDriver();
 		login = new LoginPage(driver);
-		 login.validateToolTipErrorMessageExcel(sheetname,rownumber);
+		login.validateToolTipErrorMessageExcel(sheetname, rownumber);
 	}
 
 	@Then("verify error for invalid data from sheet {string} and {int} on Login page")
-	public void validate_the_error_on_login_page_for_invalid_credential(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+	public void validate_the_error_on_login_page_for_invalid_credential(String sheetname, Integer rownumber)
+			throws InvalidFormatException, IOException {
 		driver = driverFactory.getDriver();
 		login = new LoginPage(driver);
-		 login.validateErrorMessageExcel(sheetname, rownumber);
+		login.validateErrorMessageExcel(sheetname, rownumber);
 
 	}
 
@@ -69,5 +71,31 @@ public class Login_stepDef {
 		login.clickRegisterLink();
 
 	}
+	
+	@Then("^user navigates to Data Structures module (.*) from dropdown options$")
+	public void user_navigates_to_data_structures_from_dropdown(String option) {
 
+		driver = driverFactory.getDriver();
+		home = new HomePage(driver);
+		home.validateNavigationThroughDropdown(option);
+
+	}
+	
+	@Then("user goes to module Data Structures-Introduction")
+	public void user_clicks_on_GetStarted_DataStructureIntro() {
+
+		driver = driverFactory.getDriver();
+		home = new HomePage(driver);
+		home.clickGetStartedOnHomePage();
+
+	}
+
+	@Then("user clicks NumpyNinja link")
+	public void user_clicks_on_NumpyNinja_link() {
+
+		home = new HomePage(driver);
+		home.clickNumpyNinjaLink();
+
+
+	}
 }

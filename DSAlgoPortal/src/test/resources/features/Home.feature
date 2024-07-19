@@ -20,7 +20,7 @@ Feature: DSAlgo Portal Home Page Verification
     Given user navigates to Home page
     Then user clicks Sign-in link and navigates to Login page
 
-  @TC05 @Failed
+  @TC05
   Scenario Outline: Home page -Get Started button below Data Structure topic
     Given user navigates to Home page
     Then user clicks on Get Started button below any Data Structure topic
@@ -29,3 +29,5 @@ Feature: DSAlgo Portal Home Page Verification
     Examples: 
       | warning message       |
       | You are not logged in |
+
+      
