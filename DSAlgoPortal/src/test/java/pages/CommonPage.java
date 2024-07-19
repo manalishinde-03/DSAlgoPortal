@@ -26,7 +26,8 @@ import utilities.ExcelReader;
 public class CommonPage {
 
 	private DriverFactory driverFactory = new DriverFactory();
-	private WebDriver driver;
+	public WebDriver driver;
+	public ConfigReader configReader;
 	@FindBy(xpath = "//button[text()='Run']")
 	WebElement Run;
 	@FindBy(xpath = "//a[text()='Sign out']")
@@ -119,7 +120,10 @@ public class CommonPage {
         String excelFilePath = properties.getProperty("excelPath");
         
         ExcelReader excelReader = new ExcelReader();
-        List<Map<String, String>> testdata = excelReader.getData(excelFilePath, sheetname);
+        List<Map<String, String>> testdata = excelReader.getData(configReader.initializeProp().getProperty("excelFilePath"),
+				sheetname);
+
+       // List<Map<String, String>> testdata = excelReader.getData(excelFilePath, sheetname);
 
         String code = testdata.get(row).get("python code");
 

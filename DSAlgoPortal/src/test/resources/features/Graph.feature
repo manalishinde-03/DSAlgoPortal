@@ -8,8 +8,7 @@ Feature: Explore Graph Module
     And user clicks on Login button
     When User selects Graph item from the drop down menu
     Then User should be navigated to Graph Page
-    Then user goes to previous page
-
+    
     Examples: 
       | Sheetname | RowNumber |
       | tryEditor |         0 |
@@ -27,7 +26,7 @@ Feature: Explore Graph Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_G3 @GraphlinkInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Graph Panel to explore Graph link InvalidPythonCode
@@ -42,7 +41,7 @@ Feature: Explore Graph Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_G4 @GraphRepresentationlinkValidPythonCode
   Scenario Outline: User clicks "Get Started" button in Graph panel to explore GraphRepresentations link ValidPythonCode
@@ -57,7 +56,7 @@ Feature: Explore Graph Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_G5 @GraphRepresentationlinkInvalidPythonCode
   Scenario Outline: User clicks "Get Started" button in Graph panel to explore GraphRepresentations link InvalidPythonCode
@@ -69,10 +68,7 @@ Feature: Explore Graph Module
     Then User clicks GraphRepresentations link
     And user clicks tryhere button
     Then user executes code from  sheetname '<Sheetname>' and row number <RowNumber>
-    Then user goes to previous page
-    Then user clicks signout link
-    Then logged out successfully message will be displayed
-
+    
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |

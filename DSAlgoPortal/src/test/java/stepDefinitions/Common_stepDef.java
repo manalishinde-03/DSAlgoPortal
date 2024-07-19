@@ -93,11 +93,11 @@ public class Common_stepDef {
 //	
 //		this.commonPage.driver.navigate().back();
 //	}
-	@Then("user goes to previous page")
-	public void user_goes_to_previous_page() {
-		driver = driverFactory.getDriver();
-		commonPage=new CommonPage(driver);
-		this.commonPage.driver.navigate().back();
-	}
+//	@Then("user goes to previous page")
+//	public void user_goes_to_previous_page() {
+//		driver = driverFactory.getDriver();
+//		commonPage=new CommonPage(driver);
+//		this.commonPage.driver.navigate().back();
+//	}
 	
 }

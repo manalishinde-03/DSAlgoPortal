@@ -9,7 +9,6 @@ Feature: Explore Tree Module
     And user clicks on Login button
     When user selects Tree from the drop down menu
     Then user navigated to Tree Page
-    Then user goes to previous page
 
     Examples: 
       | Sheetname | RowNumber |
@@ -28,7 +27,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T3 @OverviewofTreesInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode
@@ -43,9 +42,9 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
-  @TC_T4 @TerminologiesValidPythonCode
+  @TC_T1 @TerminologiesValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
     Given user navigates to Home page
     And user navigates to Login page
@@ -58,9 +57,9 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
-  @TC_T5 @TerminologiesInvalidPythonCode
+  @TC_T2 @TerminologiesInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode
     Given user navigates to Home page
     And user navigates to Login page
@@ -73,7 +72,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_T6 @TypesofTreesValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -88,7 +87,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T7 @TypesofTreesInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link
@@ -103,7 +102,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_08 @TreeTraversalsValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -118,7 +117,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_09 @TreeTraversalsInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link
@@ -133,7 +132,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_T10 @Traversal-IllustrationValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -148,7 +147,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T11 @Traversal-IllustrationInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode
@@ -163,7 +162,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_T12 @BinaryTreesValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -178,7 +177,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T13 @BinaryTreesInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link
@@ -193,9 +192,9 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
-  @TC_T14 @TypesofBinaryTreesValidPythonCode
+  @TC_T11 @TypesofBinaryTreesValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
     Given user navigates to Home page
     And user navigates to Login page
@@ -208,9 +207,9 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
-  @TC_T15 @TypesofBinaryTreesInvalidPythonCode
+  @TC_T12 @TypesofBinaryTreesInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode
     Given user navigates to Home page
     And user navigates to Login page
@@ -223,7 +222,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_T16 @ImplementationinPythonValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -238,7 +237,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T17 @ImplementationinPythonInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode 
@@ -253,7 +252,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_T18 @BinaryTreeTraversalsValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -268,7 +267,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T19 @BinaryTreeTraversalsInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode
@@ -283,7 +282,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_T20 @ImplementationofBinaryTreesValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -298,7 +297,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T21 @ImplementationofBinaryTreesInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link
@@ -313,7 +312,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_T22 @ApplicationsofBinaryTreesValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -328,7 +327,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T23 @ApplicationsofBinaryTreesInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode
@@ -343,9 +342,9 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
-  @TC_T24 @BinarySearchTreesValidPythonCode
+  @TC_T21 @BinarySearchTreesValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
     Given user navigates to Home page
     And user navigates to Login page
@@ -358,9 +357,9 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
-  @TC_T25 @BinarySearchTreesInvalidPythonCode
+  @TC_T22 @BinarySearchTreesInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode
     Given user navigates to Home page
     And user navigates to Login page
@@ -373,7 +372,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
 
   @TC_T26 @ImplemenationOfBSTValidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link ValidPythonCode
@@ -388,7 +387,7 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         4 |
+      | tryEditor |         1 |
 
   @TC_T27 @ImplemenationOfBSTInvalidPythonCode
   Scenario Outline: User clicks the "Get Started" from the Tree Panel to explore Tree link InvalidPythonCode
@@ -403,4 +402,4 @@ Feature: Explore Tree Module
 
     Examples: 
       | Sheetname | RowNumber |
-      | tryEditor |         5 |
+      | tryEditor |         2 |
