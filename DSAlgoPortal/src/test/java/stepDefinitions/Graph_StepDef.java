@@ -27,14 +27,14 @@ public class Graph_StepDef {
 	public void user_selects_graph_item_from_the_drop_down_menu() {
 		driver = driverFactory.getDriver();
 		CommonPF=new CommonPage(driver);
-		this.CommonPF.Handledropbox();
+		CommonPF.Handledropbox();
 	}
 
 	@Then("User should be navigated to Graph Page")
 	public void user_should_be_navigated_to_Graphpage() {
 		driver =driverFactory.getDriver();
 		GraphPF = new GraphPage(driver);
-		this.GraphPF.GraphOptions();
+		GraphPF.GraphOptions();
 	}
 
 //	@Then("User goes to previous page")
