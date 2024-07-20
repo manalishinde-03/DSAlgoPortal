@@ -59,12 +59,6 @@ public class Graph_StepDef {
 	public void user_clicks_GraphRepresentations_link() {
 	GraphPF.GraphRepresentations();
 	}
-	@Then("user clicks signout link")
-	public void user_clicks_signout_link() {
-		driver = driverFactory.getDriver();
-		CommonPF = new CommonPage(driver);
-		  CommonPF.Signout();
-	}
 
 	@Then("logged out successfully message will be displayed")
 	public void logged_out_successfully_message_will_be_displayed() {
