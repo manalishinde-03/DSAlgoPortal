@@ -16,10 +16,10 @@ import io.cucumber.junit.Cucumber;
 					"html:target/test-output/htmlReport/report.html"}, //reporting purpose
 			monochrome=false,  //console output colour
 			//tags = "@DSAlgoHomePageValidation", //tags from feature file
-			//tags = "@DSAlgoLoginFunctionality",
+			//tags = "@TC_Login_07",
 			//tags = "@DSAlgoDataStructureIntro",
 			//tags = "@DSAlgoHomePageValidation",
-			features = {"src/test/resources/features/DataStructureIntroduction.feature"}, //location of feature files
+			features = {"src/test/resources/features"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
 
