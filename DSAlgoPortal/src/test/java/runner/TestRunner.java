@@ -13,7 +13,7 @@ import io.cucumber.junit.Cucumber;
 	@CucumberOptions(
 			plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 					"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-					"html:target/test-output/htmlReport/report.html"}, //reporting purpose
+					"html:target/htmlReport/report.html"}, //reporting purpose
 			monochrome=false,  //console output colour
 			//tags = "@DSAlgoHomePageValidation", //tags from feature file
 			//tags = "@TC_Login_07",
