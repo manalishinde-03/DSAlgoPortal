@@ -1,4 +1,5 @@
-Feature: Explore Array feature
+@DSAlgoArrayValidation
+Feature: DSAlgo Array Module Validation
 
   @TC_001
   Scenario Outline: User Navigates to DropDown in the Array panel
