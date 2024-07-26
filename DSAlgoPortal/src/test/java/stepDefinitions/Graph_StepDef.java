@@ -12,7 +12,6 @@ import pages.GraphPage;
 import pages.HomePage;
 
 public class Graph_StepDef {
-	//GraphPage graph=new GraphPage(Hooks.driver);
 	HomePage home;
 	GraphPage GraphPF;
 	CommonPage CommonPF;
@@ -36,12 +35,6 @@ public class Graph_StepDef {
 		GraphPF = new GraphPage(driver);
 		GraphPF.GraphOptions();
 	}
-
-//	@Then("User goes to previous page")
-//	public void user_goes_to_previous_page() {
-//		driver = driverFactory.getDriver();
-//		this.CommonPF.driver.navigate().back();
-//	}
 
 	@When("User clicks the GetStarted button in Graph Panel")
 	public void user_clicks_the_button_in_graph_panel() {
