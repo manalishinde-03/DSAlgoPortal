@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 					"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 					"html:target/htmlReport/report.html"}, //reporting purpose
 			monochrome=false,  //console output colour
-			features = {"src/test/resources/features/Login.feature"}, //location of feature files
+			features = {"src/test/resources/features"}, //location of feature files
 			glue= "stepDefinitions") //location of step definition files
 
 
