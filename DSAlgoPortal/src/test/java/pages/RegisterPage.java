@@ -13,6 +13,7 @@ import org.testng.Assert;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import utilities.ExcelReader;
+import utilities.LoggerLoad;
 
 
 public class RegisterPage {
@@ -78,7 +79,7 @@ public class RegisterPage {
 		  
 		  WebElement activeElement = driver.switchTo().activeElement();
 		  String messageStr = activeElement.getAttribute("validationMessage");
-		  System.out.println("Actual message appeared on screen: " + messageStr);
+		  LoggerLoad.info("Actual message appeared on screen: " + messageStr);
 		  Assert.assertEquals(messageStr,errorMessage);
 	}
 	public LoginPage clickLoginLink() {
