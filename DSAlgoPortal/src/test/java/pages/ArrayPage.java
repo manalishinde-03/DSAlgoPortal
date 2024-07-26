@@ -24,7 +24,6 @@ public class ArrayPage {
 	       PageFactory.initElements(driver,this);
 	   }
 
-//		
 		 public void arrayOptions() {
 		    	
 			 Arrayoptions.click();
@@ -34,7 +33,6 @@ public class ArrayPage {
 		 }
 		 public void araaysInPython() {
 			 araaysInPython.click();
-//				
 		 }
 		 public void arraysUsingList() {
 			 ArraysUsingList.click();
@@ -48,10 +46,7 @@ public class ArrayPage {
 			 ApplicationsOfArrays.click();
 			
 		 }
-		 public void tryHereButton() {
-			 TryHereButton.click();
-
-		 }
+		
 		 public void run() {
 			 run.click();
 		 }
