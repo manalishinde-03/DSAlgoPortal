@@ -1,5 +1,5 @@
-@TreeModule
-Feature: Explore Tree Module
+@DSAlgoTreeValidation
+Feature: DSAlgo Tree Module Validation
 
   @TC_T1 @DropboxTree
   Scenario Outline: User Explore DropDownBox Tree panel

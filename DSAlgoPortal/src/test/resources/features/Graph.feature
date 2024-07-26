@@ -1,4 +1,5 @@
-Feature: Explore Graph Module
+@DSAlgoGraphValidation
+Feature: DSAlgo Graph Module Validation
 
   @TC_G1
   Scenario Outline: User Explore DropDownBox Graph panel
