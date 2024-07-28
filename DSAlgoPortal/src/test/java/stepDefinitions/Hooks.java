@@ -14,18 +14,26 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import utilities.ConfigReader;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Hooks {
 
 	private WebDriver driver;
 	public Properties configProp;
 	private DriverFactory driverFactory = new DriverFactory();
+	private static final Lock lock = new ReentrantLock();
 
 	@Before
 	public void setUp() throws IOException {
+		// to ensure that WebDriver initialization is thread-safe.
+		lock.lock();
 
 		configProp = ConfigReader.initializeProp();
 		driver = driverFactory.getDriver();
+		
+		lock.unlock();
+		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(configProp.getProperty("url"));

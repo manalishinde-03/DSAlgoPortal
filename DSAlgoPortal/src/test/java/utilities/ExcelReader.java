@@ -7,12 +7,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
+import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.util.concurrent.locks.ReentrantLock;
 
 import io.cucumber.core.internal.com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
@@ -20,13 +24,20 @@ public class ExcelReader {
 
 	public static int totalRow;
 
-	public List<Map<String, String>> getData(String excelFilePath, String sheetName)
-			throws InvalidFormatException, IOException {
+	//to ensure that only one thread can access the workbook at a time
+	private static final ReentrantLock lock = new ReentrantLock();
 
-		Workbook workbook = WorkbookFactory.create(new File(excelFilePath));
-		Sheet sheet = workbook.getSheet(sheetName);
-		workbook.close();
-		return readSheet(sheet);
+	public List<Map<String, String>> getData(String excelFilePath, String sheetName)
+			throws InvalidFormatException, IOException, OpenXML4JException {
+
+		lock.lock();
+		try (OPCPackage pkg = OPCPackage.open(new File(excelFilePath))) {
+			Workbook workbook = new XSSFWorkbook(pkg);
+			Sheet sheet = workbook.getSheet(sheetName);
+			return readSheet(sheet);
+		} finally {
+			lock.unlock();
+		}
 	}
 
 	private List<Map<String, String>> readSheet(Sheet sheet) {
@@ -60,7 +71,6 @@ public class ExcelReader {
 					data = String.valueOf(cell.getNumericCellValue());
 				else if (cell.getCellType() == CellType.BLANK)
 					data = String.valueOf(cell.getStringCellValue());
-				// columnMapdata.put(columnHeaderName, cell.getStringCellValue());
 				columnMapdata.put(columnHeaderName, data);
 			}
 

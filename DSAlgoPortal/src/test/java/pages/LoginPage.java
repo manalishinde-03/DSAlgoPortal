@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -69,7 +70,7 @@ public class LoginPage {
 		LoggerLoad.error(messageStr);
 	}
 
-	public void enterExcelDataForLogin(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+	public void enterExcelDataForLogin(String sheetname, Integer rownumber) throws InvalidFormatException, IOException, OpenXML4JException {
 
 		ExcelReader reader = new ExcelReader();
 
@@ -82,7 +83,7 @@ public class LoginPage {
 
 	}
 
-	public void validateToolTipErrorMessageExcel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+	public void validateToolTipErrorMessageExcel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException, Exception {
 
 		ExcelReader reader = new ExcelReader();
 		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
@@ -92,7 +93,7 @@ public class LoginPage {
 	}
 
 
-public void validateErrorMessageExcel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+public void validateErrorMessageExcel(String sheetname, Integer rownumber) throws InvalidFormatException, IOException, Exception {
 
 	ExcelReader reader = new ExcelReader();
 	List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
