@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -103,7 +103,7 @@ public class CommonPage {
 	}
 
 
-    public void try_python_script_excel(String sheetname, int row) throws InvalidFormatException, IOException {
+    public void try_python_script_excel(String sheetname, int row) throws IOException, OpenXML4JException {
         ConfigReader configReader = new ConfigReader();
         //Properties properties = configReader.initializeProp();
         

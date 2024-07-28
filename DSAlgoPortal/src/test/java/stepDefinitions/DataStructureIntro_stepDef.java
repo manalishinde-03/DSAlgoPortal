@@ -3,6 +3,7 @@ package stepDefinitions;
 import java.awt.AWTException;
 import java.io.IOException;
 
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.openqa.selenium.WebDriver;
 
 import driverManager.DriverFactory;
@@ -63,7 +64,7 @@ public class DataStructureIntro_stepDef{
 	}
 	
 	@Then("user runs the code from  sheetname {string} and row number {int}")
-	public void user_executes_pythonCode_from_Excel_successfully(String sheetname, int row) throws InvalidFormatException, IOException, org.apache.poi.openxml4j.exceptions.InvalidFormatException{
+	public void user_executes_pythonCode_from_Excel_successfully(String sheetname, int row) throws InvalidFormatException, IOException, Exception{
 		driver = driverFactory.getDriver();
 		commonPage = new CommonPage(driver);
 		commonPage.try_python_script_excel(sheetname,row);

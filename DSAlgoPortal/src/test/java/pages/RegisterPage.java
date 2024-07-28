@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -88,7 +89,7 @@ public class RegisterPage {
 		return new LoginPage(driver);
 	
 	}
-	public void fillRegistrationForm(String sheetname, int row) throws InvalidFormatException, IOException {
+	public void fillRegistrationForm(String sheetname, int row) throws InvalidFormatException, IOException, OpenXML4JException {
 		ExcelReader reader = new ExcelReader();
 
 		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);
@@ -101,7 +102,7 @@ public class RegisterPage {
 		enterPasswordConfirmation(passwordConfirm);
 		
 	}
-	public void validateToolTipErrorMsgExcel(String sheetname, int row) throws InvalidFormatException, IOException {
+	public void validateToolTipErrorMsgExcel(String sheetname, int row) throws InvalidFormatException, IOException, Exception {
 		
 		ExcelReader reader = new ExcelReader();
 
@@ -110,7 +111,7 @@ public class RegisterPage {
 		String expectedMessage = testdata.get(row).get("message");
 		validateToolTipErrorMsgRegistration(expectedMessage);
 	}
-	public void validateErrorMsgFromExcel(String sheetname, int row) throws InvalidFormatException, IOException {
+	public void validateErrorMsgFromExcel(String sheetname, int row) throws InvalidFormatException, IOException, Exception {
 		ExcelReader reader = new ExcelReader();
 
 		List<Map<String, String>> testdata = reader.getData("./src/test/resources/ExcelTestData/LoginData.xlsx", sheetname);

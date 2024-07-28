@@ -10,7 +10,7 @@ import io.cucumber.testng.CucumberOptions;
 				"html:target/htmlReport/report.html" }, // reporting purpose
 
 		monochrome = false, // console output colour
-		features = { "src/test/resources/features/Login.feature" }, // location of feature files
+		features = { "src/test/resources/features" }, // location of feature files
 		glue = "stepDefinitions") // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {

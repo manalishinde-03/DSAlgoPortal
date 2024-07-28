@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import java.io.IOException;
 
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.openqa.selenium.WebDriver;
 
 import driverManager.DriverFactory;
@@ -23,7 +24,7 @@ public class Login_stepDef {
 	@Then("validate the message from sheet {string} and {int} on home page")
 
 	public void validate_the_msg_on_home_page(String sheetname, Integer rownumber)
-			throws InvalidFormatException, IOException {
+			throws InvalidFormatException, IOException, Exception {
 		driver = driverFactory.getDriver();
 		home = new HomePage(driver);
 		home.validateMsgFromExcelAfterLogin(sheetname, rownumber);
@@ -48,7 +49,7 @@ public class Login_stepDef {
 
 	@Then("verify the error message from sheet {string} and {int} on Login page")
 	public void validate_the_error_on_login_page_excel(String sheetname, Integer rownumber)
-			throws InvalidFormatException, IOException {
+			throws Exception {
 		driver = driverFactory.getDriver();
 		login = new LoginPage(driver);
 		login.validateToolTipErrorMessageExcel(sheetname, rownumber);
@@ -56,7 +57,7 @@ public class Login_stepDef {
 
 	@Then("verify error for invalid data from sheet {string} and {int} on Login page")
 	public void validate_the_error_on_login_page_for_invalid_credential(String sheetname, Integer rownumber)
-			throws InvalidFormatException, IOException {
+			throws Exception {
 		driver = driverFactory.getDriver();
 		login = new LoginPage(driver);
 		login.validateErrorMessageExcel(sheetname, rownumber);

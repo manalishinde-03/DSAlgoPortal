@@ -142,8 +142,11 @@
 					<parallel>classes</parallel>
 					<threadCount>2</threadCount>
 
-				</configuration>
-
+				
+			    <includes>
+			        <include>ParallelTestRunner.java</include>
+			    </includes>
+			</configuration>
 
 			</plugin>
 			<!--	<plugin>

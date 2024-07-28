@@ -3,7 +3,7 @@ package stepDefinitions;
 import java.io.IOException;
 import java.time.Duration;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,7 +44,7 @@ public class Common_stepDef {
 	}
 
 	@When("user enters sheet {string} and {int}")
-	public void user_enters_sheet(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
+	public void user_enters_sheet(String sheetname, Integer rownumber) throws IOException, Exception {
 		driver = driverFactory.getDriver();
 		loginPage = new LoginPage(driver);
 		loginPage.enterExcelDataForLogin(sheetname, rownumber);
@@ -81,7 +81,7 @@ public class Common_stepDef {
 		this.commonPage.try_python_script(driver, "print('Hello World')");
 	}
 	@Then("user executes code from  sheetname {string} and row number {int}")
-	public void datadriven_tryeditor(String sheetname,int row)throws InvalidFormatException, IOException  {
+	public void datadriven_tryeditor(String sheetname,int row)throws IOException, Exception  {
 		this.commonPage.try_python_script_excel(sheetname,row);
 		}
 
