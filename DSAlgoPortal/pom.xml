@@ -144,7 +144,7 @@
 
 				
 			    <includes>
-			        <include>ParallelTestRunner.java</include>
+			        <include>TestRunner.java</include>
 			    </includes>
 			</configuration>
 
